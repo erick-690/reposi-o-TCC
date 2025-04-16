@@ -36,9 +36,9 @@ Siga estas etapas simples para começar a usar o EstoqueIntuitivo:
 
 ### Pré-requisitos
 
-* `Python 3.x` instalado em seu sistema.
-* `pip` (gerenciador de pacotes do Python).
-* Dependências específicas da interface gráfica (por exemplo, `Tkinter` já incluído no Python, ou outras bibliotecas como `PyQt`, `Kivy` se o projeto as utilizar).
+* `Visual Code` instalado em seu sistema.
+* `Extensões da liguagem instaladas no Visual code` (encontrados dentro do aplicativo).
+* Dependências específicas da interface gráfica (por exemplo, `Tkinter` ou outras bibliotecas como `PyQt`, `Kivy` se o projeto as utilizar).
 
 ### Instalação
 
