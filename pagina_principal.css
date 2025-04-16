@@ -1,0 +1,159 @@
+/* pagina_principal.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; 
+    position: relative;
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* background-color: transparent; ou remova essa linha se existir */
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.background-image.active {
+    opacity: 1;
+}
+
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #f0f0f0;
+    width: 100%;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    justify-content: flex-start; /* Garante que o conteúdo comece na esquerda */
+}
+
+.navbar-brand {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #1ed760;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-icon-img {
+    width: 30px; /* Defina a largura desejada para o ícone */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-right: 10px;
+    vertical-align: middle; /* Alinha verticalmente com o texto */
+}
+
+/* Estilos opcionais para itens de menu (se você adicionar) */
+.navbar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-item {
+    margin-left: 20px;
+}
+
+.navbar-link {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: #1ed760;
+}
+
+.pagina-principal-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: #f0f0f0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 80px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #1ed760;
+}
+
+button#iniciarPrograma {
+    background-color: #1ed760;
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button#iniciarPrograma:hover {
+    background-color: #b60c3f;
+}
+
+
+
+.rodape {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #f0f0f0;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.rodape-conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.rodape-conteudo p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}

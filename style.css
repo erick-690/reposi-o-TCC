@@ -1,0 +1,230 @@
+
+/* Style da reposição de estoque */
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #302f2f;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.estoque {
+    margin-bottom: 20px;
+}
+
+.estoque-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.regua {
+    width: 30px;
+    height: 300px;
+    background-color: #ddd;
+    border-radius: 10px;
+    margin-right: 20px;
+    position: relative;
+}
+
+.regua-colorida {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: green;
+    border-radius: 10px;
+}
+
+.caixas {
+    display: flex;
+    flex-direction: column-reverse; /* Altere para 'column' */
+    justify-content: flex-end; /* Alinha as caixas ao fundo */
+    gap: 5px; /* Espaçamento entre as caixas */
+    max-height: 300px; /* Limita a altura do contêiner */
+    width: 50px; /* Largura do contêiner das caixas */
+    transition: max-height 0.5s ease, opacity 0.3s ease-in-out; /* Adiciona transição suave para max-height */
+}
+
+.caixa {
+    width: 30px; /* Tamanho fixo das caixas */
+    height: 30px; /* Garante que as caixas sejam quadradas */
+    
+    border-radius: 5px;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease;
+}
+
+.caixa.removida {
+    opacity: 0; /* Caixa invisível quando removida */
+    transform: scale(0.8); /* Diminui o tamanho da caixa */
+}
+
+
+#caixas {
+    display: flex;
+    justify-content: space-evenly; /* Espaço uniforme entre as caixas */
+    align-items: center; /* Alinha verticalmente as caixas */
+    width: 30%; /* Garante que o contêiner ocupe toda a largura disponível */
+    padding: 10px; /* Adiciona espaçamento interno para evitar que encoste nas bordas */
+    box-sizing: border-box; /* Inclui padding no cálculo do tamanho total */
+    flex-wrap: nowrap; /* Impede que as caixas quebrem para uma nova linha */
+    overflow-x: auto; /* Permite rolagem horizontal caso o conteúdo ultrapasse */
+}
+
+
+
+.caixa {
+    flex: 0 0 calc((50% - 40px) / 20); /* Cada caixa ocupa uma fração baseada no total de 20 caixas, menos o espaçamento */
+    aspect-ratio: 1; /* Garante proporção quadrada */
+    
+    border-radius: 4px; /* Cantos arredondados */
+    margin: 0 2px; /* Espaçamento horizontal entre as caixas */
+}
+
+.caixa {
+    width: 50px;
+    height: 50px;
+    background-image: url('imagens1/Caixa.png'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease;
+}
+
+
+
+
+
+
+.container {
+    min-height: 50vh; /* Garante que o contêiner ocupe a altura total da página */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espalha o conteúdo para preencher a altura */
+    align-items: center;
+}
+
+
+.regua-colorida {
+    transition: background 0.3s ease-in-out;
+}
+
+.regua-colorida {
+    background: linear-gradient(to top, #ff0000, #ffeb3b, #4caf50);
+}
+
+.caixa:hover {
+    transform: scale(1.1);
+    background-color: #209fc5;
+}
+
+@keyframes piscarVerde {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes piscarAmarelo {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes piscarVermelho {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Adiciona os efeitos de piscar */
+.piscarVerde {
+    color: green;
+    animation: piscarVerde 1s infinite;
+}
+
+.piscarAmarelo {
+    color: rgb(226, 226, 9);
+    animation: piscarAmarelo 1s infinite;
+}
+
+.piscarVermelho {
+    color: red;
+    animation: piscarVermelho 1s infinite;
+}
+
+
+/* Botão de redirecionamento */
+.botao-cadastro {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botao-cadastro:hover {
+    background-color: #0056b3;
+}
+
+.botao-inicio{
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+
+/* Estilização do formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    cursor: pointer;
+}
