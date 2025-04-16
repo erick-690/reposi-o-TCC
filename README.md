@@ -3,6 +3,7 @@
 [![Licença](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Status do Projeto](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue)
 ![Linguagem](https://img.shields.io/badge/Linguagem-JavaScript-brightgreen)
+![Linguagem](https://img.shields.io/badge/Linguagem-PhP-brightgreen)
 
 **FluxOn** é um programa inovador projetado para revolucionar a forma como você gerencia e repõe seu estoque. Inspirado na clareza e facilidade de uso de interfaces visuais intuitivas, nosso software oferece uma experiência de controle de inventário simplificada, eficiente e agradável. Diga adeus às planilhas confusas e abrace uma gestão de estoque inteligente e visualmente orientada.
 
