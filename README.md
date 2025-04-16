@@ -92,7 +92,7 @@ Agradecemos a todos que contribuírem para o desenvolvimento e aprimoramento do 
 
 ## 📧 Contato
 
-Se você tiver alguma dúvida, sugestão ou feedback, sinta-se à vontade para entrar em contato através do seguinte e-mail: [seu_machikomacine690@outlook.com](mailto:seu_email@exemplo.com)
+Se você tiver alguma dúvida, sugestão ou feedback, sinta-se à vontade para entrar em contato através do seguinte e-mail: [machikomacine690@outlook.com](mailto:seu_email@exemplo.com)
 
 ---
 
