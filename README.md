@@ -96,4 +96,3 @@ Se você tiver alguma dúvida, sugestão ou feedback, sinta-se à vontade para e
 
 ---
 
-**Nota:** Este é um modelo de README. Certifique-se de substituir os textos de exemplo, links de imagens e informações de contato pelas informações reais do seu projeto. Adicione capturas de tela reais da sua interface para torná-lo ainda mais atraente e informativo. Crie um arquivo `CONTRIBUTING.md` e um arquivo `LICENSE` na raiz do seu repositório.
