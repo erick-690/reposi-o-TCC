@@ -1,10 +1,10 @@
-# EstoqueIntuitivo: Simplificando a Reposição com uma Interface Visual Poderosa
+# FluxOn: Simplificando a Reposição com uma Interface Visual Poderosa
 
 [![Licença](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Status do Projeto](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue)
 ![Linguagem](https://img.shields.io/badge/Linguagem-Python-brightgreen)
 
-**EstoqueIntuitivo** é um programa inovador projetado para revolucionar a forma como você gerencia e repõe seu estoque. Inspirado na clareza e facilidade de uso de interfaces visuais intuitivas, nosso software oferece uma experiência de controle de inventário simplificada, eficiente e agradável. Diga adeus às planilhas confusas e abrace uma gestão de estoque inteligente e visualmente orientada.
+**FluxOn** é um programa inovador projetado para revolucionar a forma como você gerencia e repõe seu estoque. Inspirado na clareza e facilidade de uso de interfaces visuais intuitivas, nosso software oferece uma experiência de controle de inventário simplificada, eficiente e agradável. Diga adeus às planilhas confusas e abrace uma gestão de estoque inteligente e visualmente orientada.
 
 <p align="center">
   <img src="screenshots/painel_principal_exemplo.png" alt="Painel Principal do EstoqueIntuitivo" width="800">
@@ -92,7 +92,7 @@ Agradecemos a todos que contribuírem para o desenvolvimento e aprimoramento do 
 
 ## 📧 Contato
 
-Se você tiver alguma dúvida, sugestão ou feedback, sinta-se à vontade para entrar em contato através do seguinte e-mail: [seu_email@exemplo.com](mailto:seu_email@exemplo.com)
+Se você tiver alguma dúvida, sugestão ou feedback, sinta-se à vontade para entrar em contato através do seguinte e-mail: [seu_machikomacine690@outlook.com](mailto:seu_email@exemplo.com)
 
 ---
 
