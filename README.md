@@ -72,7 +72,6 @@ Contribuições são bem-vindas! Se você tem ideias para melhorar o EstoqueIntu
 4.  Faça o push para a branch (`git push origin feature/sua-feature`).
 5.  Abra um Pull Request.
 
-Por favor, consulte nosso arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para diretrizes mais detalhadas.
 
 ## 🙏 Agradecimentos
 
