@@ -44,17 +44,8 @@ Siga estas etapas simples para começar a usar o EstoqueIntuitivo:
 
 1.  Clone o repositório para sua máquina local:
     ```bash
-    git clone [https://github.com/erick-690/reposi-o-TCC/tree/main](https://github.com/seu-usuario/EstoqueIntuitivo.git)
+    git clone [https://github.com/erick-690/reposi-o-TCC/tree/main](https://github.com/erick-690/reposi-o-TCC.git)
     cd EstoqueIntuitivo
-    ```
-2.  Instale as dependências (se houver um arquivo `requirements.txt`):
-    ```bash
-    pip install -r requirements.txt
-    ```
-3.  Execute o programa principal:
-    ```bash
-    python main.py  # ou o nome do arquivo principal da interface
-    ```
 
 ### Utilização
 
@@ -96,4 +87,4 @@ Agradecemos a todos que contribuírem para o desenvolvimento e aprimoramento do 
 Se você tiver alguma dúvida, sugestão ou feedback, sinta-se à vontade para entrar em contato através do seguinte e-mail: [machikomacine690@outlook.com](mailto:seu_email@exemplo.com)
 
 ---
-Clone: https://github.com/erick-690/reposi-o-TCC.git
+
