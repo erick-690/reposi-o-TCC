@@ -4,9 +4,9 @@
 ![Linguagem](https://img.shields.io/badge/Linguagem-JavaScript-brightgreen)
 ![Linguagem](https://img.shields.io/badge/Linguagem-PhP-brightgreen)
 
-**FluxOn** é um programa inovador projetado para revolucionar a forma como você gerencia e repõe seu estoque. Inspirado na clareza e facilidade de uso de interfaces visuais intuitivas, nosso software oferece uma experiência de controle de inventário simplificada, eficiente e agradável. Diga adeus às planilhas confusas e abrace uma gestão de estoque inteligente e visualmente orientada.
+**FluxOn**: é um programa inovador projetado para revolucionar a forma como você gerencia e repõe seu estoque. Inspirado na clareza e facilidade de uso de interfaces visuais intuitivas, nosso software oferece uma experiência de controle de inventário simplificada, eficiente e agradável. Diga adeus às planilhas confusas e abrace uma gestão de estoque inteligente e visualmente orientada.
 
-**Integrantes** Erick Vinicius e Maria Helena
+**Integrantes**: Erick Vinicius e Maria Helena
 <p align="center">
   <img src="https://images.vexels.com/media/users/3/146452/isolated/preview/ff1dff030e21fb04a43b2303f3d75ec2-icone-de-caixa-de-papelao-aberta.png" alt="Painel Principal do EstoqueIntuitivo" width="300">
   <br>
