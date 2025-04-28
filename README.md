@@ -1,6 +1,5 @@
 # FluxOn: Simplificando a Reposição com uma Interface Visual Poderosa
 
-[![Licença](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Status do Projeto](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue)
 ![Linguagem](https://img.shields.io/badge/Linguagem-JavaScript-brightgreen)
 ![Linguagem](https://img.shields.io/badge/Linguagem-PhP-brightgreen)
@@ -74,10 +73,6 @@ Contribuições são bem-vindas! Se você tem ideias para melhorar o EstoqueIntu
 5.  Abra um Pull Request.
 
 Por favor, consulte nosso arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para diretrizes mais detalhadas.
-
-## 📄 Licença
-
-Este projeto está licenciado sob a licença [MIT](LICENSE). Consulte o arquivo `LICENSE` para obter mais detalhes.
 
 ## 🙏 Agradecimentos
 
