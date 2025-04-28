@@ -25,7 +25,7 @@
 * **Histórico de Movimentações:** Acompanhe todas as entradas e saídas de produtos com um histórico visualmente organizado.
 
 <p align="center">
-  <img src="https://www.estoquenuvem.com.br/wp-content/uploads/sites/6/2023/03/sistema-estoque-nuvem-introducao-relatorios-1.jpg" alt="Cadastro de Produto Simplificado" width="500">
+  <img src="https://www.estoquenuvem.com.br/wp-content/uploads/sites/6/2023/03/sistema-estoque-nuvem-introducao-relatorios-1.jpg" alt="Cadastro de Produto Simplificado" width="300">
   <br>
   <em>Adicionar novos produtos nunca foi tão fácil e visual.</em>
 </p>
@@ -57,7 +57,7 @@ Siga estas etapas simples para começar a usar o EstoqueIntuitivo:
 6.  Explore os relatórios visuais para obter insights sobre o desempenho do seu estoque.
 
 <p align="center">
-  <img src="https://macmagazine.com.br/wp-content/uploads/2017/05/19-Timing-2.png" alt="Alertas Visuais de Reposição" width="600">
+  <img src="https://macmagazine.com.br/wp-content/uploads/2017/05/19-Timing-2.png" alt="Alertas Visuais de Reposição" width="300">
   <br>
   <em>Identifique rapidamente os itens que precisam de reposição com alertas visuais.</em>
 </p>
