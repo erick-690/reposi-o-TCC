@@ -57,7 +57,7 @@ Siga estas etapas simples para começar a usar o EstoqueIntuitivo:
 6.  Explore os relatórios visuais para obter insights sobre o desempenho do seu estoque.
 
 <p align="center">
-  <img src="screenshots/alerta_reposicao_exemplo.png" alt="Alertas Visuais de Reposição" width="600">
+  <img src="https://macmagazine.com.br/wp-content/uploads/2017/05/19-Timing-2.png" alt="Alertas Visuais de Reposição" width="600">
   <br>
   <em>Identifique rapidamente os itens que precisam de reposição com alertas visuais.</em>
 </p>
