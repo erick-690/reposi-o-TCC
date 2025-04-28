@@ -1,6 +1,7 @@
 # FluxOn: Simplificando a Reposição com uma Interface Visual Poderosa
 
 [![Licença](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Versão 1.0](https://img.shields.io/badge/License-MIT-yellow.svg)]
 ![Status do Projeto](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue)
 ![Linguagem](https://img.shields.io/badge/Linguagem-JavaScript-brightgreen)
 ![Linguagem](https://img.shields.io/badge/Linguagem-PhP-brightgreen)
