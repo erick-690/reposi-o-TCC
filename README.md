@@ -1,6 +1,6 @@
 # FluxOn: Simplificando a Reposição com uma Interface Visual Poderosa
 
-![Versão](https://img.shields.io/badge/Versão-1.0-blue)
+![Versão](https://img.shields.io/badge/Versão-1.2.3-blue)
 ![Status do Projeto](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue)
 ![Linguagem](https://img.shields.io/badge/Linguagem-JavaScript-brightgreen)
 ![Linguagem](https://img.shields.io/badge/Linguagem-PhP-brightgreen)
