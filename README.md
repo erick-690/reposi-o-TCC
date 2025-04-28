@@ -45,8 +45,8 @@ Siga estas etapas simples para começar a usar o EstoqueIntuitivo:
 
 1.  Clone o repositório para sua máquina local:
     ```bash
-    git clone [https://github.com/erick-690/reposi-o-TCC/tree/main](https://github.com/erick-690/reposi-o-TCC.git)
-    cd EstoqueIntuitivo
+    git clone https://github.com/erick-690/reposi-o-TCC.git
+    
 
 ### Utilização
 
