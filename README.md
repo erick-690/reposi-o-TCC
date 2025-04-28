@@ -25,7 +25,7 @@
 * **Histórico de Movimentações:** Acompanhe todas as entradas e saídas de produtos com um histórico visualmente organizado.
 
 <p align="center">
-  <img src="screenshots/cadastro_produto_exemplo.png" alt="Cadastro de Produto Simplificado" width="600">
+  <img src="https://www.estoquenuvem.com.br/wp-content/uploads/sites/6/2023/03/sistema-estoque-nuvem-introducao-relatorios-1.jpg" alt="Cadastro de Produto Simplificado" width="500">
   <br>
   <em>Adicionar novos produtos nunca foi tão fácil e visual.</em>
 </p>
