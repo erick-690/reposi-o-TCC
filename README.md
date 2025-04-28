@@ -8,7 +8,7 @@
 **FluxOn** é um programa inovador projetado para revolucionar a forma como você gerencia e repõe seu estoque. Inspirado na clareza e facilidade de uso de interfaces visuais intuitivas, nosso software oferece uma experiência de controle de inventário simplificada, eficiente e agradável. Diga adeus às planilhas confusas e abrace uma gestão de estoque inteligente e visualmente orientada.
 
 <p align="center">
-  <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.vexels.com%2Fpng-svg%2Fprevisualizar%2F146452%2Ficone-de-caixa-de-papelao-aberta&psig=AOvVaw3SAyrvQ60QpRvonNRThPv9&ust=1744918514813000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNjY0JWm3YwDFQAAAAAdAAAAABAT" alt="Painel Principal do EstoqueIntuitivo" width="800">
+  <img src="https://images.vexels.com/media/users/3/146452/isolated/preview/ff1dff030e21fb04a43b2303f3d75ec2-icone-de-caixa-de-papelao-aberta.png" alt="Painel Principal do EstoqueIntuitivo" width="800">
   <br>
   <em>Visão geral intuitiva do seu estoque em um só lugar.</em>
 </p>
