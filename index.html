@@ -3,37 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulação de Reposição de Estoque</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="pagina_principal.css">
 </head>
 <body>
-    
-    
-    
-    
-    
-    <div class="container">
-       
-       
-        <h1>Simulação de Reposição de Estoque</h1>
-
-        <div class="estoque">
-            <h2>Quantidade de Estoque</h2>
-            <div class="estoque-container">
-                <div class="regua" id="regua"></div>
-                <div class="caixas" id="caixas">
-                    <!-- As caixas serão geradas aqui pelo JavaScript -->
-                </div>
-            </div>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">
+                <img src="imagens1/Caixa.png" alt="Ícone Fluxon" class="navbar-icon-img">
+                Fluxon
+            </a>
         </div>
+    </nav>
+ 
+   <div class="pagina-principal-container">
+        <h1>Bem-vindo!</h1>
+        <button id="iniciarPrograma">Iniciar Programa</button>
+        <script>
+            document.getElementById("iniciarPrograma").addEventListener("click", function() {
+                window.location.href = "inicio.html";
+            });
+        </script>
+    
+    </div>
 
-        <p>Estoque Atual: <span id="quantidade">20</span> / 20</p>
-        <p id="statusEstoque" style="font-weight: bold; display: none;"></p>
+    <footer class="rodape">
+        <div class="rodape-conteudo">
+            <p>&copy; 2025 Fluxon - Todos os direitos reservados.</p>
+            <p>Telefone: (XX) XXXXX-XXXX</p>
+        </div>
+    </footer>
 
-       
-
-    <script src="script.js"></script>
-
-
-</body>
-</html>
+    <script src="image.js"></script>
