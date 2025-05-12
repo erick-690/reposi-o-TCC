@@ -92,7 +92,7 @@ Este é um projeto incrível que faz coisas incríveis.
 
 Aqui você pode encontrar dumps do banco de dados para diferentes momentos:
 
-* [Banco de Dados Completo (Atualizado em 2025-05-12)](Backup1.zip)
+* [Banco de Dados Completo (Atualizado em 2025-05-12)](Backup1.rar)
 
 
 Para restaurar o banco de dados, utilize o arquivo SQL dentro do ZIP com seu cliente SQL preferido.
