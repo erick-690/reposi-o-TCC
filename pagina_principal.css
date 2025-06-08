@@ -1,159 +1,844 @@
 /* pagina_principal.css */
 
-body {
-    font-family: 'Arial', sans-serif;
+/* --- Variáveis CSS para Cores e Fontes --- */
+:root {
+    --primary-blue: #007BFF; /* Um azul vibrante para acentuação */
+    --secondary-blue: #0056b3; /* Um azul mais escuro para hover */
+    --dark-bg: #1a1a1a; /* Fundo principal escuro */
+    --light-bg: #f8f9fa; /* Fundo claro para algumas seções */
+    --text-dark: #343a40; /* Texto escuro em fundos claros */
+    --text-light: #e9ecef; /* Texto claro em fundos escuros */
+    --border-color-light: #dee2e6; /* Borda clara */
+    --border-color-dark: rgba(255, 255, 255, 0.1); /* Borda escura sutil */
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.4);
+
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Novas variáveis para arredondamento */
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 15px;
+
+    /* Variáveis para efeito neon */
+    --neon-glow-text: 0 0 8px var(--primary-blue), 0 0 15px var(--primary-blue); /* Brilho para texto */
+    --neon-glow-border: 0 0 10px 2px var(--primary-blue), inset 0 0 10px 2px var(--primary-blue); /* Brilho para borda */
+}
+
+/* --- Reset Básico e Estilos Globais --- */
+* {
+    box-sizing: border-box;
     margin: 0;
-    background-color: #ffffff;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Previne rolagem horizontal indesejada */
+    scroll-behavior: smooth; /* Para rolagem suave de âncoras */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-blue);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3.8em;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 2.8em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    padding-bottom: 15px;
+    color: inherit; /* Pode ser herdado de light/dark sections */
+    text-shadow: var(--neon-glow-text); /* Efeito neon nos títulos H2 */
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 5px;
+    background-color: var(--primary-blue);
+    border-radius: 3px;
+}
+
+h3 {
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+/* --- Botões --- */
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    border: 2px solid transparent; /* Para evitar pulo no hover */
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+    box-shadow: 0 4px 15px var(--shadow-light);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px var(--shadow-dark);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    margin-left: 20px; /* Espaço entre botões */
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-blue);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px var(--shadow-dark);
+}
+
+/* --- Seções Globais --- */
+section {
+    padding: 100px 20px; /* Padding padrão para todas as seções */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Adicionado margem superior para separar as seções, exceto a primeira */
+section:not(:first-of-type) {
+    margin-top: 80px; /* Espaço maior entre as seções */
+}
+
+
+/* Seções com fundo claro */
+.about-section, .visual-examples-section {
+    background-color: var(--light-bg);
+    color: var(--text-dark); /* Altera a cor do texto para escuro */
+    border-radius: var(--border-radius-lg); /* Arredonda as bordas das seções */
+    padding: 100px 40px; /* Aumenta o padding interno das seções claras */
+    box-shadow: var(--shadow-light), var(--neon-glow-border); /* Sombra e efeito neon */
+}
+/* A primeira seção clara, se for a About, precisa de um ajuste no margin-top */
+.about-section {
+    margin-top: 80px; /* Garante espaço após o hero */
+}
+
+
+.about-section h2, .visual-examples-section h2 {
+    color: var(--text-dark); /* Títulos escuros nestas seções */
+}
+
+
+/* --- Navbar --- */
+.navbar {
+    background-color: #000000; /* Preto sólido */
+    width: 100%;
+    padding: 12px 0; /* Diminuído de 18px para 12px */
+    box-shadow: 0 6px 20px var(--shadow-dark);
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+.navbar-brand {
+    font-family: var(--font-heading);
+    font-size: 1.8em; /* Levemente diminuído de 2em */
+    font-weight: 700;
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Levemente diminuído de 10px */
+}
+
+.navbar-icon-img {
+    width: 35px; /* Diminuído de 40px */
+    height: auto;
+    object-fit: contain; /* Garante que a imagem se ajuste sem cortar ou esticar */
+    vertical-align: middle; /* Ajuda a alinhar o ícone com o texto */
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Levemente diminuído de 35px */
+}
+
+.navbar-item {
+    position: relative;
+}
+
+.navbar-link {
+    color: var(--text-light);
+    font-size: 1em; /* Levemente diminuído de 1.1em */
+    font-weight: 500;
+    padding: 5px 0;
+}
+
+.navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-blue);
+    transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after,
+.navbar-link.active::after {
+    width: 100%;
+}
+.navbar-link:hover {
+    color: var(--primary-blue);
+}
+
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    overflow: hidden; 
+    text-align: center;
     position: relative;
+    overflow: hidden;
+    color: white;
 }
 
-.background-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    /* background-color: transparent; ou remova essa linha se existir */
-}
-
-.background-image {
+/* O restante do CSS para Hero Section, Carrossel, e outras seções permanece o mesmo */
+.image-carousel-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-image {
+    min-width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
+    background-repeat: no-repeat;
+    animation: zoomPan 20s infinite alternate ease-in-out;
 }
 
-.background-image.active {
-    opacity: 1;
-}
-
-
-.navbar {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #f0f0f0;
-    width: 100%;
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    position: fixed;
+.carousel-overlay {
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
 }
 
-.navbar-container {
-    display: flex;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+.hero-content {
+    z-index: 2;
+    max-width: 900px;
     padding: 0 20px;
-    justify-content: flex-start; /* Garante que o conteúdo comece na esquerda */
+    animation: fadeInScale 1s ease-out forwards;
+    transform: scale(0.9);
+    opacity: 0;
 }
 
-.navbar-brand {
+.hero-content h1 {
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.6em;
+    margin-bottom: 50px;
+    color: var(--text-light);
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-nav-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 2;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.dot.active {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    transform: scale(1.2);
+}
+
+/* --- Seção Sobre o Fluxon --- */
+.about-section {
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-text-content {
+    flex: 1 1 50%;
+    min-width: 350px;
+    text-align: left;
+}
+
+.about-text-content h2 {
+    text-align: left;
+    color: var(--text-dark);
+    margin-bottom: 30px;
+}
+
+.about-text-content h2::after {
+    left: 0;
+    transform: translateX(0);
+}
+
+.about-text-content p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.about-benefits {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.about-benefits li {
+    font-size: 1.05em;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.about-benefits .icon-check {
+    color: var(--primary-blue);
+    font-size: 1.2em;
+    content: '✓';
+    display: inline-block;
+    width: 20px;
+}
+
+.about-image {
+    flex: 1 1 40%;
+    min-width: 300px;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md); /* Arredonda a imagem */
+    box-shadow: 0 10px 30px var(--shadow-dark);
+    transition: transform 0.3s ease;
+}
+
+.about-image img:hover {
+    transform: translateY(-5px) scale(1.01);
+}
+
+/* --- Seção Recursos Principais --- */
+.features-section {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    text-align: center;
+    border-radius: var(--border-radius-lg); /* Arredonda as bordas das seções */
+    padding: 100px 40px; /* Mantém o padding interno */
+    box-shadow: var(--shadow-dark), var(--neon-glow-border); /* Sombra e efeito neon */
+}
+
+.features-section h2 {
+    color: var(--text-light);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.feature-item {
+    background-color: #2a2a2a;
+    border-radius: var(--border-radius-md); /* Arredonda os cards de feature */
+    padding: 35px;
+    box-shadow: 0 8px 25px var(--shadow-dark);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    border: 1px solid var(--border-color-dark);
+    text-align: center;
+}
+
+.feature-item:hover {
+    transform: translateY(-12px);
+    background-color: #333333;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+.feature-item img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 0 12px var(--primary-blue)); /* Efeito neon nos ícones */
+}
+
+.feature-item h3 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    color: var(--primary-blue);
+}
+
+.feature-item p {
+    font-size: 1em;
+    color: var(--text-light);
+}
+
+/* --- Seção Exemplos Visuais --- */
+.visual-examples-section {
+    background-color: var(--light-bg);
+    color: var(--text-dark);
+    text-align: center;
+    border-radius: var(--border-radius-lg); /* Arredonda as bordas das seções */
+    padding: 100px 40px; /* Aumenta o padding interno das seções claras */
+    box-shadow: var(--shadow-light), var(--neon-glow-border); /* Sombra e efeito neon */
+}
+
+.visual-examples-section h2 {
+    color: var(--text-dark);
+}
+
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.example-card {
+    background-color: white;
+    border-radius: var(--border-radius-md); /* Arredonda os cards de exemplo */
+    box-shadow: 0 8px 25px var(--shadow-light);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color-light);
+}
+
+.example-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px var(--shadow-light);
+}
+
+.example-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color-light);
+    /* Removido border-radius aqui para que apenas o card inteiro seja arredondado */
+}
+
+.example-card-content {
+    padding: 25px;
+    text-align: left;
+}
+
+.example-card h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: var(--primary-blue);
+}
+
+.example-card p {
+    font-size: 0.95em;
+    color: var(--text-dark);
+}
+
+/* --- Seção Chamada para Ação (CTA) --- */
+.cta-section {
+    background-color: var(--primary-blue);
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    border-radius: var(--border-radius-lg); /* Arredonda as bordas das seções */
+    box-shadow: var(--shadow-dark), var(--neon-glow-border); /* Sombra e efeito neon */
+}
+
+.cta-section h2 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+.cta-section h2::after {
+    background-color: white;
+}
+
+.cta-section p {
+    font-size: 1.4em;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-content .btn-primary {
+    background-color: var(--dark-bg);
+    color: var(--primary-blue);
+    margin-right: 20px;
+}
+
+.cta-content .btn-primary:hover {
+    background-color: #333333;
+    color: var(--primary-blue);
+}
+
+.cta-content .btn-secondary {
+    border-color: white;
+    color: white;
+}
+
+.cta-content .btn-secondary:hover {
+    background-color: white;
+    color: var(--primary-blue);
+}
+
+
+/* --- Rodapé --- */
+.footer {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    padding: 60px 20px 20px;
+    border-top: 1px solid var(--border-color-dark);
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    gap: 40px;
+}
+
+.footer-brand, .footer-links, .footer-contact, .footer-social {
+    flex: 1 1 200px;
+    min-width: 150px;
+}
+
+.footer-brand {
+    font-family: var(--font-heading);
     font-size: 1.8em;
-    font-weight: bold;
-    color: #1ed760;
-    text-decoration: none;
+    font-weight: 700;
+    color: var(--primary-blue);
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
-.navbar-icon-img {
-    width: 30px; /* Defina a largura desejada para o ícone */
-    height: auto; /* Mantém a proporção da imagem */
-    margin-right: 10px;
-    vertical-align: middle; /* Alinha verticalmente com o texto */
+.footer-icon-img {
+    width: 35px;
+    height: auto;
 }
 
-/* Estilos opcionais para itens de menu (se você adicionar) */
-.navbar-menu {
+.footer-links h3, .footer-contact h3, .footer-social h3 {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+.footer-links ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
 }
 
-.navbar-item {
-    margin-left: 20px;
+.footer-links li {
+    margin-bottom: 10px;
 }
 
-.navbar-link {
-    color: #f0f0f0;
-    text-decoration: none;
-    font-size: 1em;
+.footer-links a, .footer-contact p {
+    color: var(--text-light);
+    font-size: 0.95em;
     transition: color 0.3s ease;
 }
 
-.navbar-link:hover {
-    color: #1ed760;
+.footer-links a:hover {
+    color: var(--primary-blue);
 }
 
-.pagina-principal-container {
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    padding: 40px;
+.footer-social img {
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
+    filter: brightness(0.8) grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.footer-social img:hover {
+    filter: brightness(1) grayscale(0%) drop-shadow(0 0 5px var(--primary-blue));
+}
+
+.footer-bottom {
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    color: #f0f0f0;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    margin-top: 80px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.85em;
+    color: var(--text-light);
 }
 
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-    color: #1ed760;
+/* --- Animações --- */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
-button#iniciarPrograma {
-    background-color: #1ed760;
-    color: #000;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 30px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+@keyframes zoomPan {
+    0% {
+        transform: scale(1);
+        background-position: center center;
+    }
+    50% {
+        transform: scale(1.05);
+        background-position: top left;
+    }
+    100% {
+        transform: scale(1);
+        background-position: bottom right;
+    }
 }
 
-button#iniciarPrograma:hover {
-    background-color: #b60c3f;
+
+/* --- Media Queries para Responsividade --- */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 3em;
+    }
+    h2 {
+        font-size: 2.2em;
+    }
+    .navbar-menu {
+        gap: 25px;
+    }
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-text-content {
+        min-width: unset;
+        text-align: center;
+    }
+    .about-text-content h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .about-benefits {
+        text-align: left;
+        margin: 0 auto;
+        max-width: 400px;
+    }
+    .about-image {
+        min-width: unset;
+        max-width: 80%;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+    .cta-content .btn-secondary {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    /* Ajuste para arredondamento em mobile */
+    .about-section, .features-section, .visual-examples-section, .cta-section {
+        border-radius: var(--border-radius-md); /* Menor arredondamento em telas menores */
+        padding: 80px 20px; /* Ajusta o padding interno */
+    }
 }
 
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    h2 {
+        font-size: 1.8em;
+        margin-bottom: 40px;
+    }
+    section {
+        padding: 80px 15px; /* Reduz padding padrão da seção */
+    }
+    section:not(:first-of-type) {
+        margin-top: 60px; /* Reduz espaço entre as seções em mobile */
+    }
 
 
-.rodape {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #f0f0f0;
-    text-align: center;
-    padding: 20px 0;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        box-shadow: 0 8px 16px var(--shadow-dark);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px 0;
+        transition: all 0.4s ease-in-out;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+    }
+
+    .navbar-menu.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .navbar-item {
+        text-align: center;
+        margin: 10px 0;
+    }
+    .navbar-link {
+        font-size: 1.2em;
+        padding: 10px 0;
+        display: block;
+    }
+    .navbar-link::after {
+        display: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .hero-content p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    .footer-brand {
+        justify-content: center;
+    }
+    .footer-links ul {
+        padding: 0;
+    }
+    .footer-links li {
+        margin-bottom: 8px;
+    }
+    .footer-social {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+    .footer-social img {
+        margin-right: 0;
+    }
 }
 
-.rodape-conteudo {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.rodape-conteudo p {
-    margin: 5px 0;
-    font-size: 0.9em;
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        margin: 10px 0 !important;
+    }
+    .example-card img {
+        height: 180px;
+    }
 }

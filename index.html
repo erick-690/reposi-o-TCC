@@ -3,35 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
+    <title>Fluxon - Gerenciamento Visual de Estoque Moderno</title>
     <link rel="stylesheet" href="pagina_principal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="#" class="navbar-brand">
+            <a href="#home" class="navbar-brand">
                 <img src="imagens1/Caixa.png" alt="Ícone Fluxon" class="navbar-icon-img">
                 Fluxon
             </a>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="#home" class="navbar-link">Início</a></li>
+                <li class="navbar-item"><a href="#sobre" class="navbar-link">Sobre</a></li>
+                <li class="navbar-item"><a href="#recursos" class="navbar-link">Recursos</a></li>
+                <li class="navbar-item"><a href="#exemplos" class="navbar-link">Exemplos</a></li>
+                <li class="navbar-item"><a href="#contato" class="navbar-link">Contato</a></li>
+            </ul>
+            <button class="navbar-toggle" aria-label="Abrir Menu">☰</button>
         </div>
     </nav>
- 
-   <div class="pagina-principal-container">
-        <h1>Bem-vindo!</h1>
-        <button id="iniciarPrograma">Iniciar Programa</button>
-        <script>
-            document.getElementById("iniciarPrograma").addEventListener("click", function() {
-                window.location.href = "inicio.html";
-            });
-        </script>
-    
-    </div>
 
-    <footer class="rodape">
-        <div class="rodape-conteudo">
+    <header id="home" class="hero-section">
+        <div class="image-carousel-container">
+            <div class="carousel-track">
+                </div>
+            <div class="carousel-overlay"></div> <div class="carousel-nav-dots"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Gerenciamento de Estoque Nunca Foi Tão Claro.</h1>
+            <p>Descubra o Fluxon: o poder da visualização para otimizar sua cadeia de suprimentos.</p>
+            <a href="dashboard.html" class="btn-primary">Iniciar Programa</a>
+        </div>
+    </header>
+
+    <section id="sobre" class="about-section">
+        <div class="about-container">
+            <div class="about-text-content">
+                <h2>A Revolução Visual no Seu Estoque</h2>
+                <p>O Fluxon é a ferramenta definitiva para empresas que buscam um controle de estoque **moderno, intuitivo e sem precedentes**. Esqueça as planilhas complexas e as análises tediosas. Com o Fluxon, cada item, cada movimento e cada tendência é apresentado de forma visualmente rica e de fácil compreensão.</p>
+                <p>Nosso aplicativo foi desenhado para gerenciar seu inventário através de **animações dinâmicas, representações 3D de armazéns e gráficos interativos em tempo real**. Isso não apenas simplifica o dia a dia, mas também capacita sua equipe a tomar decisões rápidas e assertivas, baseadas em dados claros e acessíveis.</p>
+                <ul class="about-benefits">
+                    <li><i class="icon-check"></i>Redução drástica de erros e desperdícios.</li>
+                    <li><i class="icon-check"></i>Otimização inteligente do espaço de armazenamento.</li>
+                    <li><i class="icon-check"></i>Visualização preditiva de tendências de consumo.</li>
+                    <li><i class="icon-check"></i>Interface intuitiva e adaptável a qualquer dispositivo.</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <img src="imagens1/fluxon_interface_mockup1.png" alt="Interface do Aplicativo Fluxon">
+            </div>
+        </div>
+    </section>
+
+    <section id="recursos" class="features-section">
+        <h2>Recursos que Impulsionam seu Negócio</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <img src="imagens1/dados tempo real.png" alt="Ícone Tempo Real">
+                <h3>Dados em Tempo Real</h3>
+                <p>Acompanhe seu estoque a cada segundo, com atualizações instantâneas sobre entradas, saídas e níveis críticos.</p>
+            </div>
+            <div class="feature-item">
+                <img src="imagens1/visualizaçãoiteligente.png" alt="Ícone 3D">
+                <h3>Visualização 3D Inteligente</h3>
+                <p>Explore seu armazém em 3D, organize espaços e simule movimentações para máxima eficiência.</p>
+            </div>
+            <div class="feature-item">
+                <img src="imagens1/graficosrelatorios.png" alt="Ícone Gráficos">
+                <h3>Gráficos e Relatórios Interativos</h3>
+                <p>Transforme dados complexos em gráficos vibrantes e compreensíveis que contam a história do seu estoque.</p>
+            </div>
+            <div class="feature-item">
+                <img src="imagens1/alertasnotificaçoes.png" alt="Ícone Alertas">
+                <h3>Alertas e Notificações Personalizadas</h3>
+                <p>Receba avisos automáticos sobre reabastecimento, validade e qualquer anomalia no seu inventário.</p>
+            </div>
+            <div class="feature-item">
+                <img src="imagens1/previsaodemanda.png" alt="Ícone Previsão">
+                <h3>Previsão de Demanda</h3>
+                <p>Utilize a inteligência de dados para prever futuras necessidades e evitar rupturas ou excessos de estoque.</p>
+            </div>
+            <div class="feature-item">
+                <img src="imagens1/acessomobile.png" alt="Ícone Mobile">
+                <h3>Acesso Mobile e Desktop</h3>
+                <p>Gerencie seu estoque de onde estiver, com uma interface otimizada para todos os seus dispositivos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="exemplos" class="visual-examples-section">
+        <h2>Experiência Visual Incomparável</h2>
+        <div class="examples-grid">
+            <div class="example-card">
+                <img src="imagens1/niveisestoquedinamico.png" alt="Gráfico de Nível de Estoque">
+                <h3>Níveis de Estoque Dinâmicos</h3>
+                <p>Gráficos em tempo real que mostram a saúde do seu inventário com clareza.</p>
+            </div>
+            <div class="example-card">
+                <img src="imagens1/fluxoanimado.png" alt="Animação de Fluxo de Produtos">
+                <h3>Fluxo de Produtos Animado</h3>
+                <p>Veja os produtos se movendo em seu armazém virtual, facilitando o rastreamento.</p>
+            </div>
+            <div class="example-card">
+                <img src="imagens1/3dprateleiras.png" alt="Prateleira 3D">
+                <h3>Representação 3D de Prateleiras</h3>
+                <p>Visualize e organize seus produtos em prateleiras e corredores tridimensionais.</p>
+            </div>
+            <div class="example-card">
+                <img src="imagens1/dashboardinterativo.png" alt="Dashboard Interativo">
+                <h3>Dashboard Interativo de Gestão</h3>
+                <p>Um painel completo com todos os KPIs importantes em um único olhar.</p>
+            </div>
+            <div class="example-card">
+                <img src="imagens1/alerta visual.png" alt="Tela de Alerta">
+                <h3>Alertas Visuais e Personalizados</h3>
+                <p>Receba notificações visuais claras para estoque mínimo ou itens próximos do vencimento.</p>
+            </div>
+            <div class="example-card">
+                <img src="imagens1/mapaiventario.png" alt="Mapa de Inventário">
+                <h3>Mapa de Inventário Inteligente</h3>
+                <p>Localize qualquer item rapidamente com um mapa visual do seu estoque.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="cta-section">
+        <div class="cta-content">
+            <h2>Pronto para Transformar seu Estoque?</h2>
+            <p>Descubra como o Fluxon pode trazer inteligência e clareza para a gestão do seu inventário.</p>
+            <a href="inicio.html" class="btn-primary">Experimente o Fluxon Agora</a>
+            <a href="#" class="btn-secondary">Agendar uma Demonstração</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="imagens1/Caixa.png" alt="Ícone Fluxon" class="footer-icon-img">
+                Fluxon
+            </div>
+            <div class="footer-links">
+                <h3>Navegação</h3>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#recursos">Recursos</a></li>
+                    <li><a href="#exemplos">Exemplos Visuais</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <p>Email: contato@fluxon.com</p>
+                <p>Telefone: (XX) XXXXX-XXXX</p>
+                <p>Endereço: Rua da Inovação, 123, Ilhéus - BA</p>
+            </div>
+            <div class="footer-social">
+                <h3>Siga-nos</h3>
+                <a href="#" aria-label="LinkedIn"><img src="imagens1/icon_linkedin.png" alt="LinkedIn"></a>
+                <a href="#" aria-label="Facebook"><img src="imagens1/icon_facebook.png" alt="Facebook"></a>
+                <a href="#" aria-label="Instagram"><img src="imagens1/icon_instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
             <p>&copy; 2025 Fluxon - Todos os direitos reservados.</p>
-            <p>Telefone: (XX) XXXXX-XXXX</p>
         </div>
     </footer>
 
     <script src="image.js"></script>
+   
+</body>
+</html>

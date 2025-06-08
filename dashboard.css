@@ -1,0 +1,124 @@
+/* dashboard.css */
+
+/* Importa as variáveis de cores, fontes e neon da página principal */
+@import url('pagina_principal.css');
+
+/* Estilos gerais do dashboard */
+.dashboard-main {
+    padding-top: 80px; /* Espaço para o navbar fixo */
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    min-height: calc(100vh - 120px); /* Garante que o dashboard ocupe a altura da tela menos o footer/header */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha o conteúdo ao topo, não centraliza verticalmente */
+}
+
+.dashboard-section {
+    padding: 80px 20px; /* Padding interno */
+    max-width: 1000px; /* Largura máxima da seção do dashboard */
+    margin: 40px auto; /* Margem superior/inferior para separação */
+    text-align: center;
+    background-color: #222222; /* Um fundo escuro para a seção */
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), var(--neon-glow-border); /* Sombra e efeito neon */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Borda sutil */
+}
+
+.dashboard-title {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: var(--primary-blue);
+    text-shadow: var(--neon-glow-text); /* Efeito neon */
+}
+
+.dashboard-subtitle {
+    font-size: 1.2em;
+    color: var(--text-light);
+    margin-bottom: 60px;
+}
+
+/* Estilo para a grade de cards */
+.dashboard-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Espaço entre os cards */
+    justify-content: center; /* Centraliza cards se não preencherem toda a linha */
+    padding: 0 20px; /* Padding para as bordas do grid */
+}
+
+/* Estilo para cada card do dashboard */
+.dashboard-card {
+    background-color: #2a2a2a; /* Fundo do card */
+    border-radius: var(--border-radius-md); /* Arredondamento */
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), var(--neon-glow-border); /* Sombra e efeito neon nas bordas do card */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex; /* Para alinhar o conteúdo verticalmente */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px; /* Altura fixa para uniformidade */
+    color: var(--text-light); /* Cor do texto no card */
+}
+
+.dashboard-card:hover {
+    transform: translateY(-10px); /* Efeito de elevação ao passar o mouse */
+    background-color: #333333; /* Leve escurecimento */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), var(--neon-glow-border); /* Neon mais forte no hover */
+}
+
+.card-icon {
+    font-size: 3.5em; /* Tamanho do ícone */
+    color: var(--primary-blue); /* Cor do ícone */
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px var(--primary-blue)); /* Neon no ícone */
+}
+
+.card-title {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary-blue); /* Cor do título */
+    text-shadow: var(--neon-glow-text); /* Neon no título do card */
+}
+
+.card-description {
+    font-size: 1em;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+    .dashboard-main {
+        padding-top: 60px;
+    }
+    .dashboard-section {
+        padding: 60px 15px;
+        margin: 20px auto;
+    }
+    .dashboard-title {
+        font-size: 2.5em;
+    }
+    .dashboard-subtitle {
+        font-size: 1.1em;
+        margin-bottom: 40px;
+    }
+    .dashboard-cards-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+        padding: 0;
+    }
+    .dashboard-card {
+        height: auto; /* Altura flexível em telas menores */
+        padding: 25px;
+    }
+    .card-icon {
+        font-size: 3em;
+    }
+    .card-title {
+        font-size: 1.6em;
+    }
+}

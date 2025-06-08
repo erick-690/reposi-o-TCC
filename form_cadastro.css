@@ -1,0 +1,92 @@
+/* form_cadastro.css */
+
+/* Importa as variáveis de cores, fontes e neon da página principal */
+@import url('pagina_principal.css');
+
+.form-section {
+    background-color: #222222; /* Fundo escuro para a seção do formulário */
+    color: var(--text-light);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), var(--neon-glow-border); /* Sombra e efeito neon */
+    padding: 50px;
+    margin: 50px auto;
+    max-width: 700px; /* Largura máxima para o formulário */
+    text-align: left; /* Alinha o texto do formulário à esquerda */
+}
+
+.form-section h2 {
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: var(--neon-glow-text);
+}
+
+.cadastro-form .form-group {
+    margin-bottom: 25px;
+}
+
+.cadastro-form label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.cadastro-form input[type="text"],
+.cadastro-form input[type="date"],
+.cadastro-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--primary-blue); /* Borda azul neon */
+    border-radius: var(--border-radius-sm);
+    background-color: #333333; /* Fundo mais escuro para os inputs */
+    color: var(--text-light);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra interna sutil */
+}
+
+.cadastro-form input[type="text"]:focus,
+.cadastro-form input[type="date"]:focus,
+.cadastro-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue); /* Borda mais forte no foco */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.6), inset 0 0 5px rgba(0, 0, 0, 0.5); /* Efeito neon no foco */
+}
+
+.cadastro-form textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.cadastro-form .btn-primary {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    margin-top: 30px;
+    box-shadow: 0 5px 20px rgba(0, 123, 255, 0.4); /* Sombra mais forte no botão */
+}
+
+/* Responsividade para o formulário */
+@media (max-width: 768px) {
+    .form-section {
+        padding: 30px;
+        margin: 20px auto;
+    }
+    .form-section h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    .cadastro-form label {
+        font-size: 1em;
+    }
+    .cadastro-form input[type="text"],
+    .cadastro-form input[type="date"],
+    .cadastro-form textarea {
+        padding: 10px 12px;
+    }
+    .cadastro-form .btn-primary {
+        font-size: 1.1em;
+        padding: 12px;
+    }
+}

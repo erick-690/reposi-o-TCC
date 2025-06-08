@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Fluxon ERP</title>
+    <link rel="stylesheet" href="pagina_principal.css">
+    <link rel="stylesheet" href="dashboard.css"> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="caminho/para/o/seu/logo.png" alt="Fluxon Logo" class="navbar-icon-img">
+                Fluxon
+            </a>
+            <button class="navbar-toggle" id="navbarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="navbar-menu" id="navbarMenu">
+                <ul class="navbar-list">
+                    <li class="navbar-item"><a href="index.html" class="navbar-link">Página Inicial</a></li>
+                    <li class="navbar-item"><a href="#dashboard" class="navbar-link active">Dashboard</a></li>
+                    </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-main">
+        <section class="dashboard-section">
+            <h2 class="dashboard-title">Bem-vindo ao Dashboard!</h2>
+            <p class="dashboard-subtitle">Gerencie seus produtos de forma eficiente.</p>
+
+            <div class="dashboard-cards-grid">
+                <a href="lista_produtos.php" class="dashboard-card">
+                    <div class="card-icon">
+                        <i class="fas fa-list-alt"></i> </div>
+                    <h3 class="card-title">Lista de Produtos</h3>
+                    <p class="card-description">Visualize todos os produtos cadastrados.</p>
+                </a>
+
+                <a href="cadastrar_produtos.html" class="dashboard-card">
+                    <div class="card-icon">
+                        <i class="fas fa-plus-circle"></i> </div>
+                    <h3 class="card-title">Cadastrar Produtos</h3>
+                    <p class="card-description">Adicione novos produtos ao seu estoque.</p>
+                </a>
+
+                <a href="erp_produtos.html" class="dashboard-card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i> </div>
+                    <h3 class="card-title">ERP de Produtos</h3>
+                    <p class="card-description">Acompanhe detalhes, datas e históricos dos produtos.</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="caminho/para/o/seu/logo.png" alt="Fluxon Logo" class="footer-icon-img">
+                Fluxon
+            </div>
+            <div class="footer-links">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="#">Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Suporte</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <p>Email: contato@fluxon.com</p>
+                <p>Telefone: (XX) XXXX-XXXX</p>
+            </div>
+            <div class="footer-social">
+                <h3>Redes Sociais</h3>
+                <a href="#"><img src="caminho/para/o/seu/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="caminho/para/o/seu/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="caminho/para/o/seu/linkedin.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Fluxon. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script> </body>
+</html>
