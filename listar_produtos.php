@@ -35,7 +35,8 @@ try {
                 ' . $card_media_html . '
                 <h3>' . htmlspecialchars($produto['nome']) . '</h3>
                 
-                <div class="card-details-scroll"> <p class="description-short">' . htmlspecialchars($produto['descricao'] ?? 'Sem descrição.') . '</p>
+                <div class="card-details-scroll">
+                    <p class="description-short">' . htmlspecialchars($produto['descricao'] ?? 'Sem descrição.') . '</p>
                     <p><strong>Código de Barras:</strong> ' . htmlspecialchars($produto['codigo_barras'] ?? 'N/A') . '</p>
                     <p><strong>Categoria:</strong> ' . htmlspecialchars($produto['categoria'] ?? 'N/A') . '</p>
                     <p><strong>Subcategoria:</strong> ' . htmlspecialchars($produto['subcategoria'] ?? 'N/A') . '</p>
@@ -50,11 +51,13 @@ try {
                     <p><strong>Última Atualização:</strong> ' . (new DateTime($produto['data_atualizacao']))->format('d/m/Y H:i') . '</p>
                 </div>
                 
-                <div class="card-actions"> <form action="apagar_produto.php" method="POST" onsubmit="return confirm(\'Tem certeza que deseja APAGAR o produto \\\'' . htmlspecialchars($produto['nome']) . '\\\'? Esta ação é irreversível!\');">
+                <div class="card-actions">
+                    <form action="apagar_produto.php" method="POST" onsubmit="return confirm(\'Tem certeza que deseja APAGAR o produto \\\'' . htmlspecialchars($produto['nome']) . '\\\'? Esta ação é irreversível!\');" style="display:inline;">
                         <input type="hidden" name="id_produto" value="' . htmlspecialchars($produto['id']) . '">
                         <button type="submit" class="btn-deletar"><i class="fas fa-trash-alt"></i> Deletar</button>
                     </form>
                     <a href="gerenciador_de_estoque.php?id=' . htmlspecialchars($produto['id']) . '" class="btn-editar"><i class="fas fa-edit"></i> Editar</a>
+                    <a href="estoque_visual.html?id=' . htmlspecialchars($produto['id']) . '" class="btn-estoque"><i class="fas fa-boxes"></i> Estoque</a>
                 </div>
             </div>';
         }

@@ -1,7 +1,5 @@
 /* lista_produtos.css */
 
-/* Importa as variáveis e estilos globais do pagina_principal.css para garantir consistência */
-
 /* Estilos para a seção que contém os produtos */
 .visual-examples-section {
     /* Herda o estilo da seção principal do index.html. */
@@ -9,13 +7,13 @@
 
 /* Garante que o título H2 da seção tenha a cor correta */
 .visual-examples-section h2 {
-    color: var(--text-dark); /* Títulos escuros, como no index.html */
+    color: var(--text-dark);
 }
 
 /* Estilos para o grid que contém os cards de produtos */
 .examples-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Reduzido para 280px para permitir mais cards ou cards menores */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 50px;
 }
@@ -25,18 +23,19 @@
     background-color: white;
     border-radius: var(--border-radius-md);
     box-shadow: 0 8px 25px var(--shadow-light);
-    overflow: hidden; /* Importante para que o scrollbar interno funcione */
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid var(--border-color-light);
     text-align: center;
-    padding-bottom: 0; /* Remove padding inferior, o scroll-area terá seu próprio */
+    padding-bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: auto; /* Deixa a altura flexível */
-    height: 480px; /* Altura fixa para o card. Ajuste este valor se precisar de cards mais altos/baixos */
-    position: relative; /* Para posicionar o scrollbar com precisão se necessário */
+    min-height: auto;
+    height: 380px;
+    position: relative;
+    flex-shrink: 0;
 }
 
 .example-card:hover {
@@ -46,8 +45,8 @@
 
 /* Estilo para a imagem do produto dentro do card */
 .example-card img {
-    width: 50%;
-    height: 200px; /* Reduzido a altura da imagem para caber mais conteúdo */
+    width: 20%;
+    height: 200px;
     object-fit: cover;
     border-bottom: 1px solid var(--border-color-light);
     margin-bottom: 15px;
@@ -55,8 +54,8 @@
 
 /* Estilo para o contêiner do ícone (quando não há imagem) */
 .example-card-icon {
-    width: 50%;
-    height: 200px; /* Mesma altura da imagem */
+    width: 20%;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,62 +72,59 @@
 /* Estilo para o título do produto (nome) */
 .example-card h3 {
     font-size: 1.4em;
-    margin-bottom: 10px; /* Espaço abaixo do título */
+    margin-bottom: 10px;
     color: var(--primary-blue);
-    padding: 0 15px; /* Adiciona um pouco de padding lateral */
-    text-align: center; /* Centraliza o nome do produto */
-    width: 100%; /* Garante que o título ocupe a largura total disponível */
+    padding: 0 15px;
+    text-align: center;
+    width: 100%;
 }
 
-/* --- Estilos para a Área de Scroll de Detalhes --- */
+/* Área de detalhes com scroll */
 .card-details-scroll {
-    max-height: 180px; /* Altura máxima para a área de detalhes com scroll, ajuste conforme necessário */
-    overflow-y: auto; /* Adiciona a barra de rolagem vertical */
-    padding: 10px 15px 15px; /* Padding interno para o conteúdo da área de scroll */
-    margin-top: 5px; /* Pequena margem superior para separar do nome do produto */
-    width: 100%; /* Ocupa a largura total do card */
-    text-align: left; /* Garante que o texto dentro da área de scroll esteja alinhado à esquerda */
-    box-sizing: border-box; /* Inclui padding e border na largura/altura */
-    -webkit-overflow-scrolling: touch; /* Melhora o scroll em dispositivos touch */
+    max-height: 180px;
+    overflow-y: auto;
+    padding: 10px 15px 15px;
+    margin-top: 5px;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Estilização da barra de rolagem (WebKit - Chrome, Safari) */
 .card-details-scroll::-webkit-scrollbar {
-    width: 8px; /* Largura da barra de rolagem */
+    width: 8px;
 }
 
 .card-details-scroll::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Fundo da barra de rolagem */
+    background: #f1f1f1;
     border-radius: 10px;
 }
 
 .card-details-scroll::-webkit-scrollbar-thumb {
-    background: var(--primary-blue); /* Cor do "polegar" da barra de rolagem */
+    background: var(--primary-blue);
     border-radius: 10px;
 }
 
 .card-details-scroll::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-blue); /* Cor do "polegar" no hover */
+    background: var(--secondary-blue);
 }
 
-/* Estilo para a descrição curta do produto dentro da área de scroll */
 .card-details-scroll p.description-short {
     font-family: var(--font-body);
-    font-size: 0.9em; /* Ligeiramente menor para economizar espaço */
+    font-size: 0.9em;
     line-height: 1.5;
     color: var(--text-dark);
-    margin-bottom: 10px; /* Espaço abaixo da descrição */
-    text-align: left; /* Garante alinhamento esquerdo */
-    font-style: italic; /* Para destacar a descrição */
+    margin-bottom: 10px;
+    text-align: left;
+    font-style: italic;
 }
 
-/* Estilo para os detalhes (preço, estoque, etc.) dentro da área de scroll */
 .card-details-scroll p {
     font-family: var(--font-body);
-    font-size: 0.85em; /* Tamanho ainda menor para os detalhes */
+    font-size: 0.85em;
     color: var(--text-dark);
-    margin-bottom: 5px; /* Menor espaço entre as linhas de detalhes */
-    text-align: left; /* Alinha os detalhes à esquerda */
+    margin-bottom: 5px;
+    text-align: left;
     line-height: 1.4;
 }
 
@@ -136,7 +132,7 @@
     font-weight: 600;
 }
 
-/* Estilos para o link que envolve o card */
+/* Link que envolve o card */
 .produto-card-link {
     text-decoration: none;
     color: inherit;
@@ -144,7 +140,7 @@
     height: 100%;
 }
 
-/* Estilo para a mensagem de "Nenhum produto cadastrado" */
+/* Mensagem de nenhum produto */
 .no-products-message {
     text-align: center;
     font-family: var(--font-body);
@@ -155,26 +151,25 @@
     grid-column: 1 / -1;
 }
 
-/* --- Media Queries para Responsividade --- */
+/* Responsividade */
 @media (max-width: 992px) {
     .example-card {
-        height: 450px; /* Ajusta a altura fixa para telas médias */
+        height: 450px;
     }
     .example-card img, .example-card-icon {
         height: 180px;
     }
     .card-details-scroll {
-        max-height: 150px; /* Ajusta a altura da área de scroll */
+        max-height: 150px;
     }
 }
-
 @media (max-width: 768px) {
     .examples-grid {
         gap: 20px;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
     .example-card {
-        height: 420px; /* Ajusta a altura fixa para telas menores */
+        height: 420px;
     }
     .example-card img, .example-card-icon {
         height: 160px;
@@ -183,13 +178,12 @@
         max-height: 140px;
     }
 }
-
 @media (max-width: 480px) {
     .examples-grid {
         grid-template-columns: 1fr;
     }
     .example-card {
-        height: 400px; /* Ajusta a altura fixa para coluna única */
+        height: 400px;
     }
     .example-card img, .example-card-icon {
         height: 180px;
@@ -199,61 +193,65 @@
     }
 }
 
-/* --- Estilos para Botões de Ação no Card --- */
+/* Botões de ação no card */
 .card-actions {
     display: flex;
-    justify-content: space-around; /* Distribui os botões uniformemente */
+    justify-content: space-around;
     align-items: center;
     width: 100%;
-    padding: 10px 15px; /* Padding para a área dos botões */
-    margin-top: auto; /* Empurra a div de ações para o final do card */
-    border-top: 1px solid var(--border-color-light); /* Linha divisória */
-    background-color: #fcfcfc; /* Um leve fundo para a área de botões */
+    padding: 10px 15px;
+    margin-top: auto;
+    border-top: 1px solid var(--border-color-light);
+    background-color: #fcfcfc;
 }
 
 .card-actions .btn-deletar,
-.card-actions .btn-editar {
+.card-actions .btn-editar,
+.card-actions .btn-estoque {
     padding: 8px 12px;
     border-radius: var(--border-radius-sm);
     font-weight: 600;
     cursor: pointer;
-    text-decoration: none; /* Remove sublinhado dos links */
-    display: flex; /* Para alinhar ícone e texto */
+    text-decoration: none;
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px; /* Espaço entre ícone e texto */
+    gap: 5px;
     font-size: 0.9em;
     transition: background-color 0.3s ease, color 0.3s ease;
-    flex: 1; /* Permite que os botões ocupem o espaço disponível */
-    margin: 0 5px; /* Pequena margem entre os botões */
+    flex: 1;
+    margin: 0 5px;
 }
 
+/* Botão Deletar vermelho */
 .card-actions .btn-deletar {
-    background-color: var(--danger-red); /* Cor vermelha para deletar */
-    color: white;
+    background-color: var(--danger-red);
+    color: rgb(254, 0, 0);
     border: 1px solid var(--danger-red);
 }
-
 .card-actions .btn-deletar:hover {
     background-color: var(--danger-dark);
     border-color: var(--danger-dark);
 }
 
+/* Botão Editar azul */
 .card-actions .btn-editar {
-    background-color: var(--primary-blue); /* Cor azul para editar */
+    background-color: var(--primary-blue);
     color: white;
     border: 1px solid var(--primary-blue);
 }
-
 .card-actions .btn-editar:hover {
     background-color: var(--secondary-blue);
     border-color: var(--secondary-blue);
 }
 
-/* Ajuste no card para acomodar os novos botões */
-.example-card {
-    /* Mantenha as configurações de altura que já definimos */
-    height: 380px; /* Ou o valor fixo que você usou na última iteração para o card */
-    padding-bottom: 0; /* Garante que o padding inferior seja 0 para que a área de ações fique no final */
-    flex-shrink: 0; /* Garante que o card não diminua mais do que o necessário em layouts flexíveis */
+/* Botão Estoque verde */
+.card-actions .btn-estoque {
+    background-color: #1db954;
+    color: rgb(255, 255, 255);
+    border: 1px solid #1db954;
+}
+.card-actions .btn-estoque:hover {
+    background-color: #15803d;
+    border-color: #15803d;
 }

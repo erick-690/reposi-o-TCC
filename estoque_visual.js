@@ -1,124 +1,172 @@
-// Definir as variáveis globais
-let estoqueAtual = 20; // Estoque inicial
-const totalEstoque = 20; // Estoque máximo
-const quantidadeElement = document.getElementById('quantidade'); // Elemento que exibe a quantidade de estoque
-const reguaElement = document.getElementById('regua'); // A régua de estoque
-const reguaColorida = document.createElement('div'); // A régua colorida (dinâmica)
-const caixasElement = document.getElementById('caixas'); // O container das caixas
-const alertaElement = document.getElementById('alerta'); // Alerta de estoque acabado
+// Variáveis globais
+let estoqueMax = 20;
+let estoqueAtual = 20;
 
-// Inicializa a régua colorida e a adiciona à régua
+// Elementos da interface
+const quantidadeElement = document.getElementById('quantidade');
+const reguaElement = document.getElementById('regua');
+const caixasElement = document.getElementById('caixas');
+const statusElement = document.getElementById('statusEstoque');
+
+// Gráfico animado (se existir na página)
+let graficoEstoque = null;
+let historicoEstoque = [18, 14, 12, 14, 17, 20, 19, estoqueAtual];
+let historicoDatas = [];
+(function gerarDatas() {
+    const agora = new Date();
+    for (let i = historicoEstoque.length - 1; i >= 0; i--) {
+        const d = new Date(agora);
+        d.setDate(d.getDate() - (historicoEstoque.length - 1 - i));
+        historicoDatas.push(d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }));
+    }
+})();
+
+// REGUA COLORIDA
+const reguaColorida = document.createElement('div');
 reguaColorida.classList.add('regua-colorida');
 reguaElement.appendChild(reguaColorida);
 
-// Função para atualizar a régua e a cor
-function atualizarRegua() {
-    const porcentagem = (estoqueAtual / totalEstoque) * 100;
-    
-    // Atualiza a altura da régua colorida
-    reguaColorida.style.height = `${porcentagem}%`;
-
-    // Ajusta a cor da régua de acordo com a quantidade de estoque
-    if (porcentagem >= 66) {
-        reguaColorida.style.background = 'green'; // Verde
-        // Atualiza o status do estoque
-        statusEstoque('Estoque Máximo', 'piscarVerde');
-    } else if (porcentagem >= 33) {
-        reguaColorida.style.background = 'yellow'; // Amarelo
-        // Atualiza o status do estoque
-        statusEstoque('Estoque Acabando', 'piscarAmarelo');
-    } else if (porcentagem > 0) {
-        reguaColorida.style.background = 'red'; // Vermelho
-        // Atualiza o status do estoque
-        statusEstoque('Últimos Estoques', 'piscarVermelho');
-    } else {
-        reguaColorida.style.background = 'red'; // Vermelho
-        // Exibe a mensagem "Estoque Acabou" quando o estoque atingir 0
-        statusEstoque('Estoque Acabou', 'piscarVermelho');
-    }
-
-    // Atualiza o texto do estoque
-    quantidadeElement.textContent = estoqueAtual;
-
-    // Exibe alerta quando o estoque acaba
-    if (estoqueAtual === 0) {
-        alertaElement.style.display = 'block';
-    } else {
-        alertaElement.style.display = 'none';
-    }
-}
-
-// Função para mostrar o status do estoque
-function statusEstoque(mensagem, classe) {
-    const statusElement = document.getElementById('statusEstoque');
-    statusElement.textContent = mensagem;
-    statusElement.className = classe;  // Adiciona a classe para piscar
-    statusElement.style.display = 'block'; // Garante que o status seja visível
-}
-
-
-function atualizarCaixas() {
-    // Limpa as caixas atuais
+// Atualiza visual do estoque
+function atualizarEstoqueVisual() {
+    // Atualiza caixas
     caixasElement.innerHTML = '';
-
-    // Cria uma nova caixa para cada unidade de estoque
     for (let i = 0; i < estoqueAtual; i++) {
-        const caixa = document.createElement('div');
-        caixa.classList.add('caixa');
+        const caixa = document.createElement("div");
+        caixa.className = "caixa";
         caixasElement.appendChild(caixa);
     }
-
-    // Atualiza a régua
+    // Atualiza régua
     atualizarRegua();
+    // Atualiza status
+    atualizarStatus();
+    // Atualiza gráfico (se houver)
+    atualizarGrafico();
+}
+
+// Atualiza régua colorida e status
+function atualizarRegua() {
+    const porcentagem = (estoqueAtual / estoqueMax) * 100;
+    reguaColorida.style.height = `${porcentagem}%`;
+    if (porcentagem >= 66) {
+        reguaColorida.style.background = 'green';
+    } else if (porcentagem >= 33) {
+        reguaColorida.style.background = 'yellow';
+    } else {
+        reguaColorida.style.background = 'red';
+    }
+    quantidadeElement.textContent = estoqueAtual;
+}
+
+// Atualiza status animado
+function atualizarStatus() {
+    statusElement.style.display = "block";
+    statusElement.className = "";
+    if (estoqueAtual >= estoqueMax * 0.7) {
+        statusElement.textContent = "Estoque saudável";
+        statusElement.classList.add("piscarVerde");
+    } else if (estoqueAtual >= estoqueMax * 0.4) {
+        statusElement.textContent = "Atenção: Estoque mediano";
+        statusElement.classList.add("piscarAmarelo");
+    } else if (estoqueAtual > 0) {
+        statusElement.textContent = "Crítico: Estoque baixo";
+        statusElement.classList.add("piscarVermelho");
+    } else {
+        statusElement.textContent = "Estoque Acabou";
+        statusElement.classList.add("piscarVermelho");
+    }
+}
+
+// Gráfico Chart.js
+function atualizarGrafico() {
+    if (!graficoEstoque) return;
+    graficoEstoque.data.labels = [...historicoDatas];
+    graficoEstoque.data.datasets[0].data = [...historicoEstoque];
+    graficoEstoque.update();
 }
 
 // Função para diminuir o estoque automaticamente
 function diminuirEstoque() {
     if (estoqueAtual > 0) {
-        estoqueAtual--; // Diminui o estoque
+        estoqueAtual--;
+        historicoEstoque.push(estoqueAtual);
+        historicoEstoque = historicoEstoque.slice(-8);
+        let hoje = new Date();
+        historicoDatas.push(hoje.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }));
+        historicoDatas = historicoDatas.slice(-8);
 
-        // Seleciona as caixas e adiciona a classe 'removida' nas últimas caixas
+        // Animação de remoção da última caixa
         const caixas = document.querySelectorAll('.caixa');
-        caixas[caixas.length - 1].classList.add('removida'); // Adiciona a classe 'removida' à última caixa
-
-        // Atualiza as caixas e a régua
-        setTimeout(atualizarCaixas, 500); // Espera a animação terminar antes de atualizar as caixas
+        if (caixas.length > 0) {
+            caixas[caixas.length - 1].classList.add('removida');
+        }
+        setTimeout(atualizarEstoqueVisual, 400);
     } else {
-        // Se o estoque chegar a 0, reinicia o estoque
-        setTimeout(reiniciarEstoque, 1000); // Espera 1 segundo antes de reiniciar
+        setTimeout(reiniciarEstoque, 1200);
     }
 }
 
 // Função para reiniciar o estoque
 function reiniciarEstoque() {
-    estoqueAtual = totalEstoque; // Reseta o estoque para o valor máximo
-
-    // Atualiza as caixas e a régua
-    atualizarCaixas();
-
-    // Reinicia o temporizador de diminuição do estoque (somente uma vez)
-    if (!intervaloDeDiminuição) {
-        intervaloDeDiminuição = setInterval(diminuirEstoque, 1000); // Reinicia a contagem
-    }
-}
-
-
-// Função para reiniciar o estoque
-function reiniciarEstoque() {
-    estoqueAtual = totalEstoque; // Reseta o estoque para o valor máximo
-
-    // Atualiza as caixas e a régua
-    atualizarCaixas();
-
-    // Reinicia o temporizador de diminuição do estoque (somente uma vez)
-    if (!intervaloDeDiminuição) {
-        intervaloDeDiminuição = setInterval(diminuirEstoque, 1000); // Reinicia a contagem
-    }
+    estoqueAtual = estoqueMax;
+    historicoEstoque.push(estoqueAtual);
+    historicoEstoque = historicoEstoque.slice(-8);
+    let hoje = new Date();
+    historicoDatas.push(hoje.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }));
+    historicoDatas = historicoDatas.slice(-8);
+    atualizarEstoqueVisual();
 }
 
 // Inicializa as caixas de estoque ao carregar a página
-window.onload = atualizarCaixas;
+window.onload = function() {
+    atualizarEstoqueVisual();
 
-// Variável para controlar o intervalo global de diminuição do estoque
-let intervaloDeDiminuição = setInterval(diminuirEstoque, 1000); // Inicia o ciclo de diminuição do estoque
+    // Inicializa gráfico se existir
+    const chartCanvas = document.getElementById('graficoEstoque');
+    if (chartCanvas && window.Chart) {
+        graficoEstoque = new Chart(chartCanvas.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: historicoDatas,
+                datasets: [{
+                    label: 'Estoque',
+                    data: historicoEstoque,
+                    backgroundColor: 'rgba(29,185,84,0.15)',
+                    borderColor: '#1db954',
+                    borderWidth: 3,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#1db954',
+                    pointRadius: 6,
+                    pointHoverRadius: 10,
+                    tension: 0.38,
+                    fill: true,
+                }]
+            },
+            options: {
+                animation: { duration: 900, easing: 'easeOutQuart' },
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#222',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        borderColor: '#1db954',
+                        borderWidth: 1
+                    }
+                },
+                scales: {
+                    x: { grid: { display: false }, ticks: { color: "#444" } },
+                    y: {
+                        beginAtZero: true,
+                        suggestedMax: estoqueMax + 2,
+                        grid: { color: "#e0e0e0" },
+                        ticks: { color: "#444", stepSize: 2 }
+                    }
+                }
+            }
+        });
+    }
+};
 
+// Variável para controlar o intervalo global
+let intervaloDeDiminuição = setInterval(diminuirEstoque, 2000); // Diminui a cada 2 segundos
