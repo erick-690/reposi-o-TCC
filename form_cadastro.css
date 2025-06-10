@@ -1,92 +1,155 @@
-/* form_cadastro.css */
-
-/* Importa as variáveis de cores, fontes e neon da página principal */
 @import url('pagina_principal.css');
 
 .form-section {
-    background-color: #222222; /* Fundo escuro para a seção do formulário */
-    color: var(--text-light);
+    background: #fff;
+    color: var(--text-dark);
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), var(--neon-glow-border); /* Sombra e efeito neon */
-    padding: 50px;
-    margin: 50px auto;
-    max-width: 700px; /* Largura máxima para o formulário */
-    text-align: left; /* Alinha o texto do formulário à esquerda */
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    padding: 40px 18px;
+    margin: 40px auto;
+    max-width: 700px;
+    text-align: left;
 }
 
 .form-section h2 {
     color: var(--primary-blue);
     text-align: center;
-    margin-bottom: 40px;
-    text-shadow: var(--neon-glow-text);
+    margin-bottom: 32px;
+    text-shadow: none;
+}
+
+.cadastro-form .form-category-title {
+    font-size: 1.08em;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin: 28px 0 14px 0;
+    border-left: 5px solid var(--primary-blue);
+    padding-left: 10px;
+    background: #f5f7fa;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.cadastro-form .form-row {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 0;
 }
 
 .cadastro-form .form-group {
-    margin-bottom: 25px;
+    flex: 1 1 0;
+    margin-bottom: 14px;
+    min-width: 120px;
 }
 
 .cadastro-form label {
     display: block;
-    font-size: 1.1em;
-    margin-bottom: 8px;
-    color: var(--text-light);
+    font-size: 0.99em;
+    margin-bottom: 5px;
+    color: var(--text-dark);
     font-weight: 500;
 }
 
 .cadastro-form input[type="text"],
 .cadastro-form input[type="date"],
-.cadastro-form textarea {
+.cadastro-form textarea,
+.cadastro-form input[type="number"],
+.cadastro-form input[type="file"] {
     width: 100%;
-    padding: 12px 15px;
-    border: 1px solid var(--primary-blue); /* Borda azul neon */
+    padding: 8px 10px;
+    border: 1px solid var(--border-color-light);
     border-radius: var(--border-radius-sm);
-    background-color: #333333; /* Fundo mais escuro para os inputs */
-    color: var(--text-light);
-    font-size: 1em;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra interna sutil */
+    background: #f7fafd;
+    color: var(--text-dark);
+    font-size: 0.97em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: none;
+    min-width: 0;
 }
 
 .cadastro-form input[type="text"]:focus,
 .cadastro-form input[type="date"]:focus,
-.cadastro-form textarea:focus {
+.cadastro-form textarea:focus,
+.cadastro-form input[type="number"]:focus {
     outline: none;
-    border-color: var(--primary-blue); /* Borda mais forte no foco */
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.6), inset 0 0 5px rgba(0, 0, 0, 0.5); /* Efeito neon no foco */
+    border-color: var(--primary-blue);
+    background: #fff;
 }
 
 .cadastro-form textarea {
-    resize: vertical; /* Permite redimensionar verticalmente */
+    resize: vertical;
+    min-height: 60px;
+    font-size: 0.97em;
+    padding: 8px 10px;
+}
+
+.cadastro-form input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* Botão menor, centralizado, texto perfeitamente alinhado */
+.cadastro-form .button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
 }
 
 .cadastro-form .btn-primary {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.2em;
-    margin-top: 30px;
-    box-shadow: 0 5px 20px rgba(0, 123, 255, 0.4); /* Sombra mais forte no botão */
+    width: auto;
+    min-width: 140px;
+    max-width: 220px;
+    padding: 10px 28px;
+    font-size: 1em;
+    background: var(--primary-blue);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 4px 16px rgba(80,80,110,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    margin: 0 auto;
+    line-height: 1.2;
+    text-align: center;
+}
+.cadastro-form .btn-primary:hover {
+    background: var(--secondary-blue);
 }
 
-/* Responsividade para o formulário */
-@media (max-width: 768px) {
+.cadastro-form small {
+    color: #888;
+    font-size: 0.95em;
+    margin-top: 2px;
+    display: block;
+}
+
+@media (max-width: 600px) {
     .form-section {
-        padding: 30px;
-        margin: 20px auto;
+        padding: 10px 2vw;
+        margin: 8px auto;
     }
     .form-section h2 {
-        font-size: 2em;
-        margin-bottom: 30px;
+        font-size: 1.1em;
+        margin-bottom: 16px;
     }
-    .cadastro-form label {
+    .cadastro-form .form-category-title {
         font-size: 1em;
+        margin: 16px 0 8px 0;
+        padding-top: 4px;
+        padding-bottom: 4px;
     }
-    .cadastro-form input[type="text"],
-    .cadastro-form input[type="date"],
-    .cadastro-form textarea {
-        padding: 10px 12px;
+    .cadastro-form .form-row {
+        flex-direction: column;
+        gap: 0;
     }
     .cadastro-form .btn-primary {
-        font-size: 1.1em;
-        padding: 12px;
+        min-width: 110px;
+        font-size: 0.97em;
+        padding: 8px 15px;
     }
 }

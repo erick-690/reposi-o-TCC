@@ -34,89 +34,100 @@
         <section class="section-container form-section">
             <h2>Cadastrar Novo Produto</h2>
             <form action="processa_cadastro.php" method="POST" class="cadastro-form" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="nome">Nome do Produto:</label>
-                    <input type="text" id="nome" name="nome" required>
+
+                <div class="form-category-title">Nome e Informações do Produto</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome do Produto:</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Ex: Arroz Branco Tipo 1">
+                    </div>
+                    <div class="form-group">
+                        <label for="codigo_barras">Código de Barras:</label>
+                        <input type="text" id="codigo_barras" name="codigo_barras" placeholder="Ex: 7891234567890">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="categoria">Categoria:</label>
+                        <input type="text" id="categoria" name="categoria" required placeholder="Ex: Alimentos">
+                    </div>
+                    <div class="form-group">
+                        <label for="subcategoria">Subcategoria:</label>
+                        <input type="text" id="subcategoria" name="subcategoria" placeholder="Ex: Grãos">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="marca">Marca:</label>
+                        <input type="text" id="marca" name="marca" placeholder="Ex: Tio João">
+                    </div>
+                    <div class="form-group">
+                        <label for="unidade_medida">Unidade de Medida:</label>
+                        <input type="text" id="unidade_medida" name="unidade_medida" required placeholder="Ex: kg">
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="codigo_barras">Código de Barras:</label>
-                    <input type="text" id="codigo_barras" name="codigo_barras">
+                <div class="form-category-title">Detalhes Comerciais</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="quantidade">Quantidade:</label>
+                        <input type="number" step="0.001" id="quantidade" name="quantidade" required placeholder="Ex: 5">
+                    </div>
+                    <div class="form-group">
+                        <label for="preco_custo">Preço de Custo:</label>
+                        <input type="number" step="0.01" id="preco_custo" name="preco_custo" placeholder="Ex: 12.50">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="preco_venda">Preço de Venda:</label>
+                        <input type="number" step="0.01" id="preco_venda" name="preco_venda" required placeholder="Ex: 16.99">
+                    </div>
+                    <div class="form-group">
+                        <label for="estoque_minimo">Estoque Mínimo:</label>
+                        <input type="number" id="estoque_minimo" name="estoque_minimo" placeholder="Ex: 10">
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="categoria">Categoria:</label>
-                    <input type="text" id="categoria" name="categoria" required>
+                <div class="form-category-title">Descrição e Estoque</div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fornecedor">Fornecedor:</label>
+                        <input type="text" id="fornecedor" name="fornecedor" placeholder="Ex: Atacadão Distribuidor">
+                    </div>
+                    <div class="form-group">
+                        <label for="ativo">
+                            <input type="checkbox" id="ativo" name="ativo" value="1" checked>
+                            Produto Ativo
+                        </label>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="subcategoria">Subcategoria:</label>
-                    <input type="text" id="subcategoria" name="subcategoria">
-                </div>
-
-                <div class="form-group">
-                    <label for="marca">Marca:</label>
-                    <input type="text" id="marca" name="marca">
-                </div>
-
-                <div class="form-group">
-                    <label for="unidade_medida">Unidade de Medida (Ex: un, kg, litro):</label>
-                    <input type="text" id="unidade_medida" name="unidade_medida" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="quantidade">Quantidade:</label>
-                    <input type="number" step="0.001" id="quantidade" name="quantidade" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="preco_custo">Preço de Custo:</label>
-                    <input type="number" step="0.01" id="preco_custo" name="preco_custo">
-                </div>
-
-                <div class="form-group">
-                    <label for="preco_venda">Preço de Venda:</label>
-                    <input type="number" step="0.01" id="preco_venda" name="preco_venda" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="estoque_minimo">Estoque Mínimo:</label>
-                    <input type="number" id="estoque_minimo" name="estoque_minimo">
-                </div>
-
                 <div class="form-group">
                     <label for="descricao">Descrição:</label>
-                    <textarea id="descricao" name="descricao" rows="4"></textarea>
+                    <textarea id="descricao" name="descricao" rows="3" placeholder="Ex: Produto 100% nacional, selecionado e embalado a vácuo."></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="imagem_produto">Imagem do Produto (Upload):</label>
+                        <input type="file" id="imagem_produto" name="imagem_produto" accept="image/*">
+                        <small>Selecione uma imagem do seu computador (JPG, PNG, GIF). Uma imagem terá prioridade na exibição.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="icone_classe">Ícone (Classe Font Awesome, ex: fas fa-box-open):</label>
+                        <input type="text" id="icone_classe" name="icone_classe" placeholder="Ex: fas fa-shopping-basket">
+                        <small>Se não enviar imagem, este ícone será exibido.</small>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="fornecedor">Fornecedor:</label>
-                    <input type="text" id="fornecedor" name="fornecedor">
+                <div class="button-wrapper">
+                    <button type="submit" class="btn-primary">Cadastrar Produto</button>
                 </div>
-
-                <div class="form-group">
-                    <label for="imagem_produto">Imagem do Produto (Upload):</label>
-                    <input type="file" id="imagem_produto" name="imagem_produto" accept="image/*">
-                    <small>Selecione uma imagem do seu computador (JPG, PNG, GIF). Uma imagem terá prioridade na exibição.</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="icone_classe">Ícone (Classe Font Awesome, ex: fas fa-box-open):</label>
-                    <input type="text" id="icone_classe" name="icone_classe" placeholder="Ex: fas fa-shopping-basket">
-                    <small>Se não enviar imagem, este ícone será exibido.</small>
-                </div>
-                <div class="form-group">
-                    <label for="ativo">Produto Ativo:</label>
-                    <input type="checkbox" id="ativo" name="ativo" value="1" checked>
-                </div>
-
-                <button type="submit" class="btn-primary">Cadastrar Produto</button>
             </form>
         </section>
     </main>
 
     <footer class="footer">
-        </footer>
+    </footer>
 
     <script src="js/script.js"></script>
 </body>
