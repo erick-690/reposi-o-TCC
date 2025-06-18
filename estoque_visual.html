@@ -4,49 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulação de Reposição de Estoque</title>
+    <link rel="stylesheet" href="pagina_principal.css">
     <link rel="stylesheet" href="estoque_visual.css">
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-    <div class="container">
-        <h1>
-            <i class="fas fa-warehouse" style="color:#1db954; margin-right:10px;"></i>
-            Simulação de Reposição de Estoque
-        </h1>
+<body class="bg-dark-estoque">
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="imagens1/Caixa.png" alt="Fluxon Logo" class="navbar-icon-img">
+                Fluxon
+            </a>
+            <button class="navbar-toggle" id="navbarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="navbar-menu" id="navbarMenu">
+                <ul class="navbar-list">
+                    <li class="navbar-item"><a href="index.html" class="navbar-link">Página Inicial</a></li>
+                    <li class="navbar-item"><a href="dashboard.html" class="navbar-link">Dashboard</a></li>
+                    <li class="navbar-item"><a href="lista_produtos.php" class="navbar-link">Produtos</a></li>
+                    <li class="navbar-item"><a href="cadastrar_produtos.html" class="navbar-link">Cadastrar Produto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        <div class="estoque">
-            <h2>
-                <span style="color:#1db954"><i class="fas fa-cubes"></i></span> Quantidade de Estoque
-            </h2>
-            <div class="estoque-container">
-                <div class="regua" id="regua"></div>
-                <div class="caixas" id="caixas">
-                    <!-- As caixas serão geradas aqui pelo JavaScript -->
+    <main class="content-page">
+        <section class="section-container estoque-visual-section">
+            <div class="estoque-simulador-container">
+                <h1 class="estoque-title">
+                    <i class="fas fa-warehouse" style="color:#1db954; margin-right:10px;"></i>
+                    Simulação de Reposição de Estoque
+                </h1>
+
+                <div class="estoque-box">
+                    <h2 class="estoque-subtitle">
+                        <span style="color:#1db954"><i class="fas fa-cubes"></i></span>
+                        Quantidade de Estoque
+                    </h2>
+                    <div class="estoque-container">
+                        <div class="regua" id="regua"></div>
+                        <div class="caixas" id="caixas">
+                            <!-- As caixas são geradas pelo JS -->
+                        </div>
+                    </div>
+                    <div class="estoque-info">
+                        <p>
+                            <span class="qtd-destaque">
+                                Estoque Atual: <span id="quantidade">20</span> / 20
+                            </span>
+                        </p>
+                        <p id="statusEstoque" class="estoque-status"></p>
+                    </div>
                 </div>
+
+                <section class="estoque-grafico-section">
+                    <div class="grafico-container">
+                        <h2 class="estoque-subtitle"><i class="fas fa-chart-line" style="color:#007bff;"></i> Histórico do Estoque</h2>
+                        <canvas id="graficoEstoque" height="210"></canvas>
+                    </div>
+                </section>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <div class="estoque-info">
-            <p>
-                <span style="font-size:22px;font-weight:bold;color:#1db954;">
-                    Estoque Atual: <span id="quantidade">20</span> / 20
-                </span>
-            </p>
-            <p id="statusEstoque" style="font-weight: bold; display: none;"></p>
-        </div>
-    </div>
-
-    <!-- Nova seção para o gráfico animado de estoque -->
-    <section class="estoque-grafico-section">
-        <div class="grafico-container">
-            <h2><i class="fas fa-chart-line" style="color:#007bff;"></i> Histórico do Estoque</h2>
-            <canvas id="graficoEstoque" height="100"></canvas>
-        </div>
-    </section>
-
-    <!-- Font Awesome para ícones modernos -->
+    <footer class="footer"></footer>
     <script src="https://kit.fontawesome.com/ef3a0f3a9d.js" crossorigin="anonymous"></script>
     <script src="estoque_visual.js"></script>
+    <script>
+        // Menu responsivo
+        document.getElementById('navbarToggle').onclick = function() {
+            document.getElementById('navbarMenu').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

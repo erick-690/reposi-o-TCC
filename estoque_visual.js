@@ -9,8 +9,9 @@ const caixasElement = document.getElementById('caixas');
 const statusElement = document.getElementById('statusEstoque');
 
 // Gráfico animado (se existir na página)
+// Histórico mais longo e responsivo
 let graficoEstoque = null;
-let historicoEstoque = [18, 14, 12, 14, 17, 20, 19, estoqueAtual];
+let historicoEstoque = [18, 14, 12, 14, 17, 20, 19, estoqueAtual, 20, 19, 15, 13, 17, 20, 20, 18, 9, 12, 14, 16, 19, 13, 16, 8, 7, 20];
 let historicoDatas = [];
 (function gerarDatas() {
     const agora = new Date();
@@ -28,12 +29,17 @@ reguaElement.appendChild(reguaColorida);
 
 // Atualiza visual do estoque
 function atualizarEstoqueVisual() {
-    // Atualiza caixas
+    // Renderiza apenas as caixas cheias, do topo para baixo
     caixasElement.innerHTML = '';
-    for (let i = 0; i < estoqueAtual; i++) {
-        const caixa = document.createElement("div");
-        caixa.className = "caixa";
-        caixasElement.appendChild(caixa);
+    for (let i = 0; i < estoqueMax; i++) {
+        const caixaDiv = document.createElement("div");
+        caixaDiv.className = "caixa";
+        if (i < estoqueAtual) {
+            caixaDiv.classList.remove('vazia');
+        } else {
+            caixaDiv.classList.add('vazia');
+        }
+        caixasElement.appendChild(caixaDiv);
     }
     // Atualiza régua
     atualizarRegua();
@@ -84,20 +90,23 @@ function atualizarGrafico() {
     graficoEstoque.update();
 }
 
-// Função para diminuir o estoque automaticamente
+// Função para diminuir o estoque automaticamente (de cima para baixo)
 function diminuirEstoque() {
     if (estoqueAtual > 0) {
         estoqueAtual--;
         historicoEstoque.push(estoqueAtual);
-        historicoEstoque = historicoEstoque.slice(-8);
+        historicoEstoque = historicoEstoque.slice(-24); // Mostra mais histórico agora!
         let hoje = new Date();
         historicoDatas.push(hoje.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }));
-        historicoDatas = historicoDatas.slice(-8);
+        historicoDatas = historicoDatas.slice(-24);
 
-        // Animação de remoção da última caixa
-        const caixas = document.querySelectorAll('.caixa');
-        if (caixas.length > 0) {
-            caixas[caixas.length - 1].classList.add('removida');
+        // Animação de remoção da caixa mais de cima (primeira caixa cheia)
+        const caixas = caixasElement.children;
+        for (let i = 0; i < caixas.length; i++) {
+            if (!caixas[i].classList.contains("vazia")) {
+                caixas[i].classList.add('removida');
+                break;
+            }
         }
         setTimeout(atualizarEstoqueVisual, 400);
     } else {
@@ -109,10 +118,10 @@ function diminuirEstoque() {
 function reiniciarEstoque() {
     estoqueAtual = estoqueMax;
     historicoEstoque.push(estoqueAtual);
-    historicoEstoque = historicoEstoque.slice(-8);
+    historicoEstoque = historicoEstoque.slice(-24);
     let hoje = new Date();
     historicoDatas.push(hoje.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }));
-    historicoDatas = historicoDatas.slice(-8);
+    historicoDatas = historicoDatas.slice(-24);
     atualizarEstoqueVisual();
 }
 
@@ -155,7 +164,7 @@ window.onload = function() {
                     }
                 },
                 scales: {
-                    x: { grid: { display: false }, ticks: { color: "#444" } },
+                    x: { grid: { display: false }, ticks: { color: "#444", maxTicksLimit: 12 } },
                     y: {
                         beginAtZero: true,
                         suggestedMax: estoqueMax + 2,

@@ -122,3 +122,65 @@
         font-size: 1.6em;
     }
 }
+
+
+/* Força navbar-menu horizontal em todos tamanhos de tela */
+.navbar-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 30px;
+    position: static !important;
+    width: auto !important;
+    background: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+.navbar-list {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.navbar-item {
+    text-align: left !important;
+    margin: 0 !important;
+}
+.navbar-link {
+    display: inline-block !important;
+    font-size: 1em !important;
+    padding: 5px 0 !important;
+}
+.navbar-toggle {
+    display: none !important;
+}
+
+/* Remove mobile-specific overrides para garantir o menu horizontal sempre */
+@media (max-width: 900px), (max-width: 768px) {
+    .navbar-menu, .navbar-list {
+        display: flex !important;
+        flex-direction: row !important;
+        position: static !important;
+        width: auto !important;
+        background: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+    .navbar-item {
+        margin: 0 !important;
+    }
+    .navbar-link {
+        font-size: 1em !important;
+        padding: 5px 0 !important;
+    }
+    .navbar-toggle {
+        display: none !important;
+    }
+}

@@ -1,265 +1,356 @@
-body {
-    font-family: 'Inter', Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@import url('pagina_principal.css');
+
+/* Fundo preto para toda a página */
+body.bg-dark-estoque, .bg-dark-estoque {
+    background: var(--dark-bg) !important;
+}
+
+.estoque-visual-section {
+    background: transparent !important;
+    padding: 60px 8px 60px 8px;
+    margin: 0 auto 0;
+    max-width: 980px;
     min-height: 100vh;
-    background: linear-gradient(120deg, #232526 0%, #1db954 100%);
-    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
-
-.container {
-    text-align: center;
-    padding: 32px 24px 24px 24px;
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.14);
+.estoque-simulador-container {
     width: 100%;
-    max-width: 540px;
-    margin-top: 40px;
-    position: relative;
-    z-index: 1;
+    max-width: 650px;
+    margin: 0 auto;
 }
 
-h1 {
-    font-size: 2.1em;
-    margin-bottom: 16px;
-    letter-spacing: -1px;
-    color: #222;
+.estoque-title {
+    font-family: var(--font-heading);
+    font-size: 2.6em;
+    text-align: center;
+    color: var(--primary-blue);
+    margin-bottom: 36px;
+    letter-spacing: 1.5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5em;
+    background: transparent;
 }
 
-.estoque-info {
-    margin-top: 15px;
+.estoque-box {
+    background: #fff;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 4px 26px var(--shadow-dark);
+    padding: 34px 24px 32px;
+    margin-bottom: 38px;
+    border: 1.5px solid #ececec;
 }
 
-.estoque h2 {
-    margin-bottom: 18px;
-    font-size: 1.2em;
-    color: #222;
-    letter-spacing: 0.2px;
+.estoque-subtitle {
+    color: var(--primary-blue);
+    font-size: 1.35em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 0.5em;
 }
 
 .estoque-container {
     display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 22px;
     justify-content: center;
-    align-items: flex-end;
-    min-height: 320px;
-    margin-bottom: 0;
-}
-
-/* Régua vertical moderna */
-.regua {
-    width: 36px;
-    height: 320px;
-    background: linear-gradient(to top, #ff0000 0%, #ffd600 50%, #4caf50 100%);
-    border-radius: 12px;
-    margin-right: 28px;
-    position: relative;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
-    flex-shrink: 0;
-}
-
-.regua::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    width: 8px;
-    height: 95%;
-    background: rgba(255,255,255,0.2);
-    border-radius: 8px;
-    transform: translateX(-50%);
-}
-
-.regua-colorida {
-    position: absolute;
-    bottom: 0;
     width: 100%;
-    border-radius: 10px;
-    transition: background 0.3s, height 0.5s;
-    background: green;
 }
 
-/* Caixas empilhadas verticalmente, de baixo para cima, ALINHADAS À BASE (correto para estoque) */
+/* Régua de estoque */
+.regua {
+    width: 30px;
+    height: 420px;
+    background: #e4e7ed;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    margin-right: 0;
+    display: flex;
+    align-items: flex-end;
+    border: 2px solid #d9dde8;
+}
+.regua-colorida {
+    width: 100%;
+    border-radius: 18px;
+    transition: height 0.3s, background 0.3s;
+    position: absolute;
+    left: 0; bottom: 0;
+    z-index: 1;
+}
+
+/* Caixas de estoque - maiores e alinhadas ao topo, sem sobra ou barra de rolagem */
 .caixas {
     display: flex;
-    flex-direction: column-reverse;
-    justify-content: flex-end;
-    align-items: flex-end;   /* Ficam grudadas à régua, na base */
-    gap: 6px;
-    height: 320px;          /* <-- altura fixa, igual à régua! */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    height: 420px;
+    padding-left: 6px;
+    position: relative;
+    overflow: hidden; /* não deixa barra de rolagem */
+}
+.caixa {
     width: 54px;
-    transition: max-height 0.5s, opacity 0.3s;
-    overflow: hidden;       /* Não deixa caixas "escaparem" para fora */
+    height: 54px;
+    background: url('imagens1/Caixa.png') no-repeat center center/contain;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 2px 12px rgba(29,185,84,0.12);
+    margin-bottom: 0;
+    transition: transform 0.25s, opacity 0.25s;
+    border: 2px solid #fff;
     position: relative;
     z-index: 2;
-    background: transparent;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent !important;
+    opacity: 1;
+    visibility: visible;
 }
-
-/* Caixinha individual animada */
-.caixa {
-    width: 50px;
-    height: 50px;
-    background-image: url('imagens1/Caixa.png');
-    background-size: cover;
-    background-position: center;
-    border-radius: 7px;
-    box-shadow: 0 1px 8px rgba(0,0,0,0.11);
-    transition: opacity 0.5s, transform 0.3s;
-    margin: 0 1px;
-    flex: 0 0 auto;
-}
-
-.caixa.removida {
+.caixa.vazia {
     opacity: 0;
-    transform: scale(0.8);
+    visibility: hidden;
+    pointer-events: none;
+}
+.caixa.removida {
+    animation: caixaRemovida 0.4s;
+    opacity: 0 !important;
+    transform: scale(0.7) translateY(-25px);
+}
+@keyframes caixaRemovida {
+    from { opacity: 1; transform: scale(1);}
+    to   { opacity: 0; transform: scale(0.7) translateY(-25px);}
 }
 
-.caixa:hover {
-    transform: scale(1.1) rotate(-2deg);
-    box-shadow: 0 4px 16px #1db95455;
-    background-color: #e8f5e9;
+.estoque-info {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 6px;
 }
 
-/* Status animados */
-#statusEstoque {
-    margin-top: 8px;
-    font-size: 1.1em;
+.qtd-destaque {
+    font-size: 1.36em;
+    font-weight: bold;
+    color: #1db954;
+    letter-spacing: 1px;
+}
+
+/* Status do estoque animado */
+.estoque-status {
+    font-size: 1.08em;
+    font-weight: 700;
+    margin-top: 9px;
+    letter-spacing: .6px;
+    display: inline-block;
+    padding: 7px 22px;
+    border-radius: 30px;
+    transition: background 0.3s, color 0.3s;
+    background: #f7fafd;
+    border: 1px solid #e9ecef;
 }
 .piscarVerde {
-    color: #1db954;
-    animation: piscarVerde 1s infinite;
+    color: #fff !important;
+    background: #1db954 !important;
+    animation: piscarVerde 1.2s infinite alternate;
 }
 @keyframes piscarVerde {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.45; }
+    from { box-shadow: 0 0 12px #1db95444; }
+    to   { box-shadow: 0 0 32px #1db954cc; }
 }
 .piscarAmarelo {
-    color: #ffd600;
-    animation: piscarAmarelo 1s infinite;
+    color: #fff !important;
+    background: #ffd600 !important;
+    animation: piscarAmarelo 1.2s infinite alternate;
 }
 @keyframes piscarAmarelo {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.45; }
+    from { box-shadow: 0 0 12px #ffd60044; }
+    to   { box-shadow: 0 0 32px #ffd600cc; }
 }
 .piscarVermelho {
-    color: #e53935;
-    animation: piscarVermelho 1s infinite;
+    color: #fff !important;
+    background: #ff1744 !important;
+    animation: piscarVermelho 1.2s infinite alternate;
 }
 @keyframes piscarVermelho {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.45; }
+    from { box-shadow: 0 0 12px #ff174444; }
+    to   { box-shadow: 0 0 32px #ff1744cc; }
 }
 
-/* Seção do gráfico de estoque animado */
+/* Gráfico */
 .estoque-grafico-section {
+    background: #fff;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 3px 18px var(--shadow-light);
+    padding: 36px 32px 36px;
+    margin: 0 auto;
+    max-width: 850px;
+    min-width: 340px;
     width: 100%;
+    border: 1.5px solid #ececec;
     display: flex;
-    justify-content: center;
-    margin: 0;
-    margin-bottom: 32px;
+    flex-direction: column;
+    align-items: center;
 }
 
 .grafico-container {
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.07);
-    margin-top: 40px;
-    padding: 24px 28px 28px 28px;
-    max-width: 540px;
     width: 100%;
-}
-
-.grafico-container h2 {
-    margin: 0 0 18px 0;
-    color: #007bff;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    font-size: 1.2em;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Botões modernos (se houver) */
-.botao-cadastro,
-.botao-inicio {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 5px 0;
-}
-
-.botao-cadastro:hover,
-.botao-inicio:hover {
-    background-color: #0056b3;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
-}
-
-.form-group {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+.grafico-container canvas {
+    margin: 0 auto;
+    display: block;
+    background: #f7fafd;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+    padding: 10px 0;
+    max-width: 100%;
+    width: 100%;
+    /* Altura só pelo atributo HTML */
 }
 
-label {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-input {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-input:focus {
-    outline: none;
-    border-color: #007BFF;
-    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
-}
-
-button {
-    cursor: pointer;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-    .container, .grafico-container {
-        padding: 16px 5px 18px 5px;
+@media (max-width: 900px) {
+    .estoque-visual-section {
+        padding: 25px 4vw 40px 4vw;
+        margin: 30px auto 15px;
+    }
+    .estoque-grafico-section {
+        max-width: 98vw;
+        padding: 18px 2vw 18px;
+    }
+    .grafico-container {
         max-width: 98vw;
     }
-    .regua {
-        margin-right: 12px;
-        height: 220px;
-    }
-    .estoque-container { min-height: 220px; }
-    .caixas {
+    .caixa {
         width: 38px;
-        height: 220px;
-        max-height: 220px;
+        height: 38px;
+    }
+    .regua {
+        height: 260px;
+    }
+    .caixas {
+        height: 260px;
+    }
+}
+@media (max-width: 600px) {
+    .grafico-container {
+        max-width: 98vw;
+    }
+    .estoque-visual-section {
+        padding: 10px 1vw 20px 1vw;
+        margin: 5vw 0;
+    }
+    .estoque-simulador-container {
+        padding: 0;
+    }
+    .estoque-title {
+        font-size: 1.2em;
+    }
+    .estoque-box {
+        padding: 16px 5px;
+    }
+    .estoque-subtitle {
+        font-size: 1.12em;
+    }
+    .estoque-container {
+        gap: 10px;
+    }
+    .regua {
+        height: 120px;
+        width: 16px;
+        margin-right: 6px;
     }
     .caixa {
-        width: 36px;
-        height: 36px;
+        width: 22px;
+        height: 22px;
+        margin-bottom: 1px;
+    }
+    .caixas {
+        height: 120px;
+        gap: 3px;
+    }
+}
+.navbar {
+    /* position: sticky; */
+    /* top: 0; */
+    /* z-index: 100; */
+}
+
+
+
+/* Força navbar-menu horizontal em todos tamanhos de tela */
+.navbar-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 30px;
+    position: static !important;
+    width: auto !important;
+    background: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+.navbar-list {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.navbar-item {
+    text-align: left !important;
+    margin: 0 !important;
+}
+.navbar-link {
+    display: inline-block !important;
+    font-size: 1em !important;
+    padding: 5px 0 !important;
+}
+.navbar-toggle {
+    display: none !important;
+}
+
+/* Remove mobile-specific overrides para garantir o menu horizontal sempre */
+@media (max-width: 900px), (max-width: 768px) {
+    .navbar-menu, .navbar-list {
+        display: flex !important;
+        flex-direction: row !important;
+        position: static !important;
+        width: auto !important;
+        background: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+    .navbar-item {
+        margin: 0 !important;
+    }
+    .navbar-link {
+        font-size: 1em !important;
+        padding: 5px 0 !important;
+    }
+    .navbar-toggle {
+        display: none !important;
     }
 }

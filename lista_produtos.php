@@ -61,9 +61,9 @@
             </div>
             <div class="footer-social">
                 <h3>Siga-nos</h3>
-                <a href="#" aria-label="LinkedIn"><img src="imagens1/icon_linkedin.png" alt="LinkedIn"></a>
-                <a href="#" aria-label="Facebook"><img src="imagens1/icon_facebook.png" alt="Facebook"></a>
-                <a href="#" aria-label="Instagram"><img src="imagens1/icon_instagram.png" alt="Instagram"></a>
+                <a href="#" aria-label="LinkedIn"><img src="imagens1/likendin.png" alt="LinkedIn"></a>
+                <a href="#" aria-label="Facebook"><img src="imagens1/facebook icon.jpg" alt="Facebook"></a>
+                <a href="#" aria-label="Instagram"><img src="imagens1/instaicon.png" alt="Instagram"></a>
             </div>
         </div>
         <div class="footer-bottom">
