@@ -1,20 +1,41 @@
 <?php
+// Tenta obter a DATABASE_URL do ambiente (usada no Render)
+$database_url = getenv('DATABASE_URL');
 
-$host = "localhost"; // Geralmente é localhost
-$dbname = "produto_mercado"; // Substitua pelo nome do seu banco de dados
-$usuario = "root"; // Substitua pelo seu nome de usuário do banco de dados
-$senha = ""; // Substitua pela sua senha do banco de dados
-
-try {
-    $conexao = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $usuario, $senha);
-    // Defina o modo de erro do PDO para exceções
-    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //echo "Conexão com o banco de dados realizada com sucesso!";
-} catch(PDOException $e) {
-    echo "Erro na conexão com o banco de dados: " . $e->getMessage();
+if ($database_url) {
+    // === CONEXÃO PARA POSTGRESQL (RENDER) ===
+    $url_parts = parse_url($database_url);
+    $host = $url_parts['host'];
+    $port = $url_parts['port'];
+    $user = $url_parts['user'];
+    $pass = $url_parts['pass'];
+    $dbname = ltrim($url_parts['path'], '/'); 
+    
+    $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
+    
+    $options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ];
+    
+} else {
+    // === CONEXÃO PARA MYSQL (LOCAL/DESENVOLVIMENTO) ===
+    // Use estas credenciais se rodar localmente sem a DATABASE_URL
+    $host = 'localhost'; 
+    $db = 'produto_mercado'; 
+    $user = 'root'; 
+    $pass = ''; 
+    
+    $dsn = "mysql:host=$host;dbname=$db;charset=utf8";
+    $options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ];
 }
 
-// Você pode fechar a conexão no final do seu script, se necessário:
-// $conexao = null;
-
+try {
+    $conexao = new PDO($dsn, $user, $pass, $options);
+} catch (PDOException $e) {
+    die("Erro de Conexão com o Banco de Dados: " . $e->getMessage());
+}
 ?>

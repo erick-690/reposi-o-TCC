@@ -1,0 +1,20 @@
+# .htaccess
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Regra para evitar listagem de diretórios
+    Options -Indexes
+    # Se o arquivo existe, use-o
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # Se o diretório existe, use-o
+    RewriteCond %{REQUEST_FILENAME} !-d
+</IfModule>
+
+# Configurações para processar PHP
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+# Configurações de segurança e upload (Opcional, mas recomendado)
+php_value upload_max_filesize 20M
+php_value post_max_size 20M
+php_value memory_limit 128M
