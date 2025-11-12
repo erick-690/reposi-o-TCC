@@ -34,11 +34,8 @@ if ($database_url) {
 }
 
 try {
-    // ATENÇÃO: Renomeado de $conexao para $pdo
-    $pdo = new PDO($dsn, $user, $pass, $options); 
+    $conexao = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
-    // Se falhar, exibe o erro e interrompe o script
     die("Erro de Conexão com o Banco de Dados: " . $e->getMessage());
 }
-// Se a conexão for bem-sucedida, o $pdo agora está definido e pronto para uso.
 ?>
